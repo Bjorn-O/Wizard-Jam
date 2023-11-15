@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,12 +29,16 @@ public class Modifier : ScriptableObject
 
     public void SetSpell(Spell targetSpell)
     {
+        if (!targetSpell.HasModifierSlot) return;
+
         _spell = targetSpell;
-        if (statValuePairs.Keys.Count > 0)
-        {
-            ApplyMod();
-            return;
-        }
+
+
+        //if (statValuePairs.Keys.Count > 0)
+        //{
+        //    ApplyMod();
+        //    return;
+        //}
 
         statValuePairs.Add(Stats.damage, new Ref<float>(() => _spell.damage, value => _spell.damage = value));
         statValuePairs.Add(Stats.manaCost, new Ref<float>(() => _spell.manaCost, value => _spell.manaCost = value));
@@ -43,6 +48,7 @@ public class Modifier : ScriptableObject
         statValuePairs.Add(Stats.castAmount, new Ref<float>(() => _spell.castAmount, value => _spell.castAmount = Mathf.RoundToInt(value)));
 
         ApplyMod();
+        statValuePairs = null;
     }
 
     public void ApplyMod()

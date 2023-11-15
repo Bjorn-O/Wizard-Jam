@@ -21,6 +21,7 @@ public abstract class Spell : MonoBehaviour
 
     protected Modifier[] modifiers = new Modifier[3];
 
+    [SerializeField] protected string spellName;
     [SerializeField] protected SpellEffect spellEffect;
     [SerializeField] protected UnityEvent onSpellCast;
     [SerializeField] protected UnityEvent onSpellCancelled;
@@ -38,9 +39,14 @@ public abstract class Spell : MonoBehaviour
 
     public abstract IEnumerator CastSpell();
 
-    public abstract void FireSpellEffect(SpellEffect effect, float amount);
+    protected abstract void FireSpellEffect(SpellEffect effect, float amount);
 
-    public abstract void AddModifier(Modifier mod);
+    public virtual void AddModifier(Modifier mod)
+    {
+        modifiers[modifiers.Length] = mod;
+        spellName = string.Format(spellName + mod.name);
+    }
 
+    public bool HasModifierSlot { get { return (modifiers.Length < 3); } }
     public SpellEffect SpellEffect { get { return spellEffect; } }
 }
