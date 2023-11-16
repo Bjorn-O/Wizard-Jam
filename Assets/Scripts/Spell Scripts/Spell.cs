@@ -62,7 +62,7 @@ public abstract class Spell : MonoBehaviour
 
     public abstract IEnumerator CastSpell();
 
-    //protected abstract void FireSpellEffect(SpellEffect effect, float amount);
+    protected abstract void FireSpellEffect(SpellEffect effect, float amount);
 
     public virtual void AddModifier(Modifier mod)
     {
