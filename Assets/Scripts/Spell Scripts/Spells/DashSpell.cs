@@ -15,13 +15,27 @@ public class DashSpell : Spell
     [SerializeField] private SpellVfxManager _speedLines;
     [SerializeField] private float _dashFovAdder = 10;
     [SerializeField] private float _fovTweenTime = 0.25f;
+
+    [Header("Spell Effect settings")]
+    [SerializeField] private float _effectOffsetZ = 8.5f;
+    [SerializeField] private float _effectExtraOffsetZ = 1f;
+    private List<SpellEffect> pooledSpellEffects = new List<SpellEffect>();
+
     private float _speedLinesOffsetZ;
     private float _startingCamFov;
     private bool _dashing = false;
     private bool _canCheckDash = false;
 
+    private int _extraCasts = 0;
+    private bool _resetCastAmount = true;
+
     public override IEnumerator CastSpell()
     {
+        if (_resetCastAmount)
+        {
+            _extraCasts = castAmount - 1;
+        }
+
         Vector3 dir = _playerMov.MovementDir;
 
         if (_playerMov.MovementInput.magnitude <= 0.1f)
@@ -39,7 +53,25 @@ public class DashSpell : Spell
         }
 
         _rb.AddForce(dir * _dashForce, ForceMode.Impulse);
+
+        _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
+
         _playerMov.UseGravity = false;
+
+        if (modifiers.Count > 0)
+        {
+            float offsetZ = _effectOffsetZ;
+
+            for (int i = 0; i < effectAmount; i++)
+            {
+                SpellEffect effect = spellEffectPool.Get();
+                effect.damage = damage;
+                effect.transform.localPosition = new Vector3(0, 0, offsetZ);
+                offsetZ += _effectExtraOffsetZ;
+
+                pooledSpellEffects.Add(effect);
+            }
+        }
 
         _speedLines.PlayEffect(modifiers.Count > 0);
         _speedLines.transform.position = _cam.transform.position + dir * _speedLinesOffsetZ;
@@ -55,11 +87,6 @@ public class DashSpell : Spell
         _canCheckDash = true;
     }
 
-    protected override void FireSpellEffect(SpellEffect effect, float amount)
-    {
-        throw new System.NotImplementedException();
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -71,17 +98,7 @@ public class DashSpell : Spell
         _cam = Camera.main;
         _startingCamFov = _cam.fieldOfView;
 
-        List<Elements> elements = new List<Elements>();
-
-        foreach (var mod in modifiers)
-        {
-            if (mod.Element != Elements.Unaspected)
-            {
-                elements.Add(mod.Element);
-            }
-        }
-
-        OnApplyModifiers.AddListener(() => _speedLines.ModifyParticleSystems(castAmount, elements.ToArray()));
+        OnApplyModifiers.AddListener(() => _speedLines.ModifyParticleSystems(effectAmount, GetElementsFromMods().ToArray()));
     }
 
     private void Update()
@@ -106,6 +123,23 @@ public class DashSpell : Spell
             _cam.DOFieldOfView(_startingCamFov, _fovTweenTime);
 
             _playerCol.gameObject.layer = _rb.gameObject.layer;
+
+            foreach (var effect in pooledSpellEffects)
+            {
+                spellEffectPool.Release(effect);
+            }
+
+            pooledSpellEffects.Clear();
+
+            if (_extraCasts <= 0)
+            {
+                _resetCastAmount = true;
+            }
+            else
+            {
+                StartCoroutine(CastSpell());
+                _extraCasts -= 1;
+            }
         }
     }
 }

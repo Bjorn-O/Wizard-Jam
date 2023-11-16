@@ -26,37 +26,21 @@ public class Modifier : ScriptableObject
             { Operators.Divide, (a, b) => a / b }
     };
 
-    Dictionary<Stats, Ref<float>> statValuePairs = new Dictionary<Stats, Ref<float>>();
-
     public void SetSpell(Spell targetSpell)
     {
-        if (!targetSpell.HasModifierSlot) return;
+        //if (!targetSpell.HasModifierSlot) return;
 
         _spell = targetSpell;
 
-
-        //if (statValuePairs.Keys.Count > 0)
-        //{
-        //    ApplyMod();
-        //    return;
-        //}
-
-        statValuePairs.Add(Stats.damage, new Ref<float>(() => _spell.damage, value => _spell.damage = value));
-        statValuePairs.Add(Stats.manaCost, new Ref<float>(() => _spell.manaCost, value => _spell.manaCost = value));
-        statValuePairs.Add(Stats.cooldown, new Ref<float>(() => _spell.cooldown, value => _spell.cooldown = value));
-        statValuePairs.Add(Stats.effectScale, new Ref<float>(() => _spell.effectScale, value => _spell.effectScale = value));
-        statValuePairs.Add(Stats.effectAmount, new Ref<float>(() => _spell.effectAmount, value => _spell.effectAmount = Mathf.RoundToInt(value)));
-        statValuePairs.Add(Stats.castAmount, new Ref<float>(() => _spell.castAmount, value => _spell.castAmount = Mathf.RoundToInt(value)));
-
         ApplyMod();
-        statValuePairs = null;
     }
 
     public void ApplyMod()
     {
         foreach (var mod in mods)
         {
-            statValuePairs[mod.targetStat].Value = operatorDictionary[mod.operation](statValuePairs[mod.targetStat].Value, mod.value);
+            Ref<float> statRef = _spell.GetStatRefByEnum(mod.targetStat);
+            statRef.Value = operatorDictionary[mod.operation](statRef.Value, mod.value);
         }
 
         var targetEffect = _spell.SpellEffect;
@@ -73,7 +57,7 @@ public class Modifier : ScriptableObject
 
 }
 
-sealed class Ref<T>
+public class Ref<T>
 {
     private Func<T> getter;
     private Action<T> setter;

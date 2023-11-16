@@ -16,8 +16,8 @@ public class MagicBolt : Spell
         throw new System.NotImplementedException();
     }
 
-    protected override void FireSpellEffect(SpellEffect effect, float amount)
-    {
-        throw new System.NotImplementedException();
-    }
+    //protected override void FireSpellEffect(SpellEffect effect, float amount)
+    //{
+    //    throw new System.NotImplementedException();
+    //}
 }

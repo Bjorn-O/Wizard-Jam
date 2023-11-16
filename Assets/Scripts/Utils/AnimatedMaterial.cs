@@ -8,6 +8,7 @@ public class AnimatedMaterial : MonoBehaviour
     [SerializeField] private Texture[] _textures;
     [SerializeField] private float _delayBetweenTextures = 0.1f;
     [SerializeField] private bool _enabled = true;
+    [SerializeField] private bool _randomDelay = false;
 
     private int _matIndex = 0;
     private float delayTimer = 0;
@@ -21,6 +22,7 @@ public class AnimatedMaterial : MonoBehaviour
     private void Start()
     {
         _matIndex = 0;
+        delayTimer = _randomDelay ? Random.Range(0, _delayBetweenTextures) : 0;
     }
 
     private void Update()

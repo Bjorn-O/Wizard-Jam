@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerSpellCast : MonoBehaviour
 {
-    private PlayerStats playerStats;
+    private CharacterStats playerStats;
     private HotbarUI hotbarUI;
 
     [SerializeField] private Spell[] spells = new Spell[4];
@@ -14,7 +14,7 @@ public class PlayerSpellCast : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerStats = GetComponent<PlayerStats>();
+        playerStats = GetComponent<CharacterStats>();
         hotbarUI = FindObjectOfType<HotbarUI>();
 
         for (int i = 0; i < spells.Length; i++)

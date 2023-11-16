@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class BurningHitEffect : OnHitEffect
 {
+    public override void Execute(CharacterStats stats)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override void OnHit(SpellEffect originEffect)
     {
         throw new System.NotImplementedException();
