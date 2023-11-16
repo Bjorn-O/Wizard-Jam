@@ -34,13 +34,6 @@ public class Modifier : ScriptableObject
 
         _spell = targetSpell;
 
-
-        //if (statValuePairs.Keys.Count > 0)
-        //{
-        //    ApplyMod();
-        //    return;
-        //}
-
         statValuePairs.Add(Stats.damage, new Ref<float>(() => _spell.damage, value => _spell.damage = value));
         statValuePairs.Add(Stats.manaCost, new Ref<float>(() => _spell.manaCost, value => _spell.manaCost = value));
         statValuePairs.Add(Stats.cooldown, new Ref<float>(() => _spell.cooldown, value => _spell.cooldown = value));
