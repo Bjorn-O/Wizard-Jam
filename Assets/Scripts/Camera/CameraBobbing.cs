@@ -43,7 +43,6 @@ public class CameraBobbing : MonoBehaviour
         float highestDot = upDot > downDot ? upDot : downDot;
 
         float lookUpPercentage = Mathf.Abs(highestDot - 1);
-        print(lookUpPercentage);
 
         pos.x += Mathf.Cos(Time.time * _frequency / 2) * _Amplitude * (2 * lookUpPercentage);
 

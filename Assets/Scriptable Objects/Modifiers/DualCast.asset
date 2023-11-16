@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d566f579dc94247b86580e8c7e5ca0, type: 3}
   m_Name: DualCast
   m_EditorClassIdentifier: 
+  keyword: Twin
   icon: {fileID: 0}
-  mods: []
   element: 0
-  keyword: 
+  mods:
+  - operation: 2
+    targetStat: 5
+    value: 2
+  - operation: 2
+    targetStat: 1
+    value: 0.75
+  onHitEffects: []

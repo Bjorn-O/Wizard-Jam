@@ -39,7 +39,6 @@ public class EnemyMovement : MonoBehaviour
         }
 
         targetDistance = Vector3.Distance(_targetPosition, transform.position);
-        Debug.Log(targetDistance);
         if (targetDistance <= stopDistance)
         {
             CheckLineOfSight();

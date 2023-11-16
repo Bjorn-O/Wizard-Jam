@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +7,10 @@ using UnityEngine.UI;
 public class Modifier : ScriptableObject
 {
     [SerializeField] private string keyword;
+    public string Keyword { get { return keyword; } }
     [SerializeField] private Image icon;
     [SerializeField] private Elements element;
+    public Elements Element { get { return element; } }
 
     [SerializeField] private Mod[] mods;
     [SerializeField] private OnHitEffect[] onHitEffects;
@@ -57,19 +58,20 @@ public class Modifier : ScriptableObject
         {
             statValuePairs[mod.targetStat].Value = operatorDictionary[mod.operation](statValuePairs[mod.targetStat].Value, mod.value);
         }
+
         var targetEffect = _spell.SpellEffect;
         foreach (var effect in onHitEffects)
         {
-            var component = targetEffect.gameObject.AddComponent(effect.GetType());
+            //var component = targetEffect.gameObject.AddComponent(effect.GetType());
             //targetEffect.OnHitTrigger += component.OnHit; 
         }
+
+        _spell.OnApplyModifiers.Invoke();
     }
 
     // TO DO: Remove Modifier
 
 }
-
-
 
 sealed class Ref<T>
 {

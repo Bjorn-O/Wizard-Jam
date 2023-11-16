@@ -1,16 +1,19 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public abstract class Spell : MonoBehaviour
 {
-    protected float baseDamage;
-    protected float baseManaCost;
-    protected float baseCoolDown;
-    protected float baseEffectScale;
-    protected int baseEffectAmount;
-    protected int baseCastAmount;
+    [Header("Base stats")]
+    [SerializeField] protected float baseDamage;
+    [SerializeField] protected float baseManaCost;
+    [SerializeField] protected float baseCoolDown;
+    [SerializeField] protected float baseEffectScale = 1;
+    [SerializeField] protected int baseEffectAmount = 1;
+    [SerializeField] protected int baseCastAmount = 1;
 
+    [Header("Stats")]
     public float damage;
     public float manaCost;
     public float cooldown;
@@ -18,11 +21,17 @@ public abstract class Spell : MonoBehaviour
     public int effectAmount;
     public int castAmount;
 
+    [Header("Mods")]
+    [SerializeField] protected List<Modifier> modifiers = new List<Modifier>();
+    public List<Modifier> Modifiers { get { return modifiers; } }
 
-    protected Modifier[] modifiers = new Modifier[3];
-
+    [Header("Other settings")]
     [SerializeField] protected string spellName;
+    [SerializeField] protected Sprite spellIcon;
+    public Sprite SpellIcon { get { return spellIcon; } }
+
     [SerializeField] protected SpellEffect spellEffect;
+    [Space()]
     [SerializeField] protected UnityEvent onSpellCast;
     [SerializeField] protected UnityEvent onSpellCancelled;
 
@@ -43,10 +52,17 @@ public abstract class Spell : MonoBehaviour
 
     public virtual void AddModifier(Modifier mod)
     {
-        modifiers[modifiers.Length] = mod;
-        spellName = string.Format(spellName + mod.name);
+        modifiers.Add(mod);
+        spellName = mod.Keyword + " " + spellName;
     }
 
-    public bool HasModifierSlot { get { return (modifiers.Length < 3); } }
+    public virtual void RemoveModifier(Modifier mod)
+    {
+        modifiers.Remove(mod);
+        spellName = spellName.Replace(mod.Keyword + " ", "");
+    }
+
+    public bool HasModifierSlot { get { return (modifiers.Count < 3); } }
     public SpellEffect SpellEffect { get { return spellEffect; } }
+    public UnityEvent OnApplyModifiers;
 }

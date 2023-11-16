@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _moveSpeed = 10;
     public float MoveSpeed { get { return _moveSpeed; } }
     [SerializeField] private float _maxForce = 1;
+    [SerializeField] private float _gravity = 9.8f;
+    [SerializeField] private float _gravityWhenGrounded = 2;
 
     [Header("Ground check")]
     [SerializeField] private Transform _groundCheckPoint;
@@ -18,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
     private bool _grounded = false;
     public bool Grounded { get { return _grounded; } }
+
+    public bool UseGravity { get; set; } = true;
 
     [Header("Jump")]
     [SerializeField] private float _jumpForce = 10;
@@ -32,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _rb.useGravity = false;
     }
 
     private void Update()
@@ -42,6 +47,21 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         UpdateMovement();
+        ApplyGravity();
+    }
+
+    private void ApplyGravity()
+    {
+        if (!UseGravity)
+            return;
+
+        if (_grounded)
+        {
+            _rb.AddForce(Vector3.down * _rb.mass * _gravityWhenGrounded);
+            return;
+        }
+
+        _rb.AddForce(Vector3.down * _rb.mass * _gravity);
     }
 
     private void OnMove(InputValue inputValue)
