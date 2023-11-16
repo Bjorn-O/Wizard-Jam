@@ -7,12 +7,12 @@ public class SpellVfxManager : MonoBehaviour
     private List<ParticleSystem> particleSystems = new List<ParticleSystem>();
     private List<BaseParticleSystemValues> baseParticleSystemValues = new List<BaseParticleSystemValues>();
 
+    [SerializeField] private List<ParticleSystem> excludeSystems = new List<ParticleSystem>();
     [SerializeField] private GameObject[] objectEffects;
+    [SerializeField] private Material[] materialsToChange;
     [SerializeField] private ElementalEffect[] elementalEffects;
 
     private Dictionary<ParticleSystem, ElementalEffect> elementEffectPsPairs = new Dictionary<ParticleSystem, ElementalEffect>();
-
-    private List<Material> objectEffectsMats = new List<Material>();
     [SerializeField] private float emmisionRateModMultiplier = 0.75f;
 
     // Start is called before the first frame update
@@ -22,13 +22,11 @@ public class SpellVfxManager : MonoBehaviour
 
         foreach (ParticleSystem particleSystem in particleSystems)
         {
+            if (excludeSystems.Contains(particleSystem))
+            {
+                particleSystems.Remove(particleSystem);
+            }
             baseParticleSystemValues.Add(new BaseParticleSystemValues(particleSystem.main.startColor.color, particleSystem.emission.rateOverTime.constant));
-        }
-
-        foreach (GameObject effect in objectEffects)
-        {
-            effect.SetActive(false);
-            objectEffectsMats.Add(effect.GetComponentInChildren<Renderer>().material);
         }
 
         foreach (var item in elementalEffects)
@@ -84,10 +82,10 @@ public class SpellVfxManager : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < objectEffectsMats.Count; i++)
+        for (int i = 0; i < materialsToChange.Length; i++)
         {
-            finalColor.a = objectEffectsMats[i].color.a;
-            objectEffectsMats[i].color = finalColor;
+            finalColor.a = materialsToChange[i].color.a;
+            materialsToChange[i].color = finalColor;
         }
 
         for (int i = 0; i < elementalEffects.Length; i++)
