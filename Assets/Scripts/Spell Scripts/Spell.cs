@@ -44,6 +44,7 @@ public abstract class Spell : MonoBehaviour
     protected IObjectPool<SpellEffect> spellEffectPool;
 
     protected Dictionary<Stats, Ref<float>> statValuePairs = new Dictionary<Stats, Ref<float>>();
+    protected float startingCooldown = 0;
 
     private void Awake()
     {

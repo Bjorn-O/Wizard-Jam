@@ -58,6 +58,12 @@ public class PlayerSpellCast : MonoBehaviour
             if (spellCooldowns[i] <= 0)
                 continue;
 
+            if (spells[i].cooldown == Mathf.Infinity)
+            {
+                hotbarUI.UpdateCooldown(i, 1, 1);
+                continue;
+            }
+
             spellCooldowns[i] -= Time.deltaTime;
 
             hotbarUI.UpdateCooldown(i, spellCooldowns[i], spells[i].cooldown);

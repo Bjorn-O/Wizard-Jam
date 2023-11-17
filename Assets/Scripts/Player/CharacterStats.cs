@@ -13,21 +13,40 @@ public class CharacterStats : MonoBehaviour
     public float Health { get { return health; } set { health = Mathf.Clamp(value, 0, maxHealth); } }
     public float Mana { get { return mana; } set { mana = Mathf.Clamp(value, 0, maxMana); } }
 
-    public UnityEvent OnDeath;
+    public UnityEvent OnHit;
+    public UnityEvent<Vector3> OnDeath;
 
-    public void TakeDamage(float damage, OnHitEffect[] hitEffects)
+    public void Start()
     {
+        ResetStats();
+    }
+
+    public void ResetStats()
+    {
+        health = maxHealth;
+        mana = maxMana;
+    }
+
+    public void TakeDamage(float damage, OnHitEffect[] hitEffects, Vector3 force)
+    {
+        if (health <= 0)
+            return;
+
         health -= damage;
+        OnHit?.Invoke();
 
         if (health <= 0)
         {
-            OnDeath?.Invoke();
+            OnDeath?.Invoke(force);
             return;
         }
 
-        foreach (var effect in hitEffects)
+        if (hitEffects != null)
         {
-            effect.Execute(this);
-        }
+            foreach (var effect in hitEffects)
+            {
+                effect.Execute(this);
+            }
+        }       
     }
 }
