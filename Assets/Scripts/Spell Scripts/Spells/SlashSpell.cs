@@ -49,6 +49,11 @@ public class SlashSpell : Spell
         cooldown = _startingCooldown;
     }
 
+    protected override void FireSpellEffect(SpellEffect effect, float amount)
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void Start()
     {
         OnApplyModifiers.AddListener(() => { _modifyParticles = true; });
