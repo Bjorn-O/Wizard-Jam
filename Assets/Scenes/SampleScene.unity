@@ -577,9 +577,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad2b049b8fcce24e9d0e3637f602dfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 1
+  baseDamage: 5
   baseManaCost: 0
-  baseCoolDown: 0
+  baseCoolDown: 1.5
   baseEffectScale: 1
   baseEffectAmount: 2
   baseCastAmount: 1
@@ -608,21 +608,38 @@ MonoBehaviour:
       m_Calls: []
   castPoint: {fileID: 663495423}
   playerPoint: {fileID: 1869452967}
-  castSpreadDegrees: 15
   curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
       weightedMode: 3
-      inWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 3
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
       outWeight: 0.33333334
     m_PreInfinity: 2
-    m_PostInfinity: 2
+    m_PostInfinity: 1
     m_RotationOrder: 4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
