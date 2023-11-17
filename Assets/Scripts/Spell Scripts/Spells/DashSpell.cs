@@ -36,6 +36,12 @@ public class DashSpell : Spell
             _extraCasts = castAmount - 1;
         }
 
+        if (cooldown != Mathf.Infinity)
+        {
+            startingCooldown = cooldown;
+            cooldown = Mathf.Infinity;
+        }
+
         Vector3 dir = _playerMov.MovementDir;
 
         if (_playerMov.MovementInput.magnitude <= 0.1f)
@@ -134,6 +140,7 @@ public class DashSpell : Spell
             if (_extraCasts <= 0)
             {
                 _resetCastAmount = true;
+                cooldown = startingCooldown;
             }
             else
             {

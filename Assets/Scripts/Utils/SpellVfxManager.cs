@@ -16,17 +16,25 @@ public class SpellVfxManager : MonoBehaviour
     [SerializeField] private float emmisionRateModMultiplier = 0.75f;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         particleSystems.AddRange(GetComponentsInChildren<ParticleSystem>(true));
+
+        List<ParticleSystem> removingSystems = new List<ParticleSystem>();
 
         foreach (ParticleSystem particleSystem in particleSystems)
         {
             if (excludeSystems.Contains(particleSystem))
             {
-                particleSystems.Remove(particleSystem);
+                removingSystems.Add(particleSystem);
+                continue;
             }
             baseParticleSystemValues.Add(new BaseParticleSystemValues(particleSystem.main.startColor.color, particleSystem.emission.rateOverTime.constant));
+        }
+
+        foreach (var ps in removingSystems)
+        {
+            particleSystems.Remove(ps);
         }
 
         foreach (var item in elementalEffects)

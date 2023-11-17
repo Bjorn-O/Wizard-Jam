@@ -10,6 +10,7 @@ public class EnemyMovement : MonoBehaviour
     public Transform target;
     private Vector3 _targetPosition;
     private NavMeshAgent _navMeshAgent;
+    private Animator _anim;
 
     private float targetDistance;
     [SerializeField] private float stopDistance = 10f;
@@ -18,21 +19,32 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float detectionDelay= 0.2f;
     
     [SerializeField]private bool chasePlayer = true;
+
     private float _timer;
     public LayerMask Player;
     
     private void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _anim = GetComponentInChildren<Animator>();
     }
 
     private void Start()
     {
         _targetPosition = target.position;
+        _navMeshAgent.enabled = true;
     }
 
     private void Update()
     {
+        if (!_navMeshAgent.enabled)
+            return;
+
+        if (_anim != null)
+        {
+            _anim.SetFloat("Speed", _navMeshAgent.velocity.magnitude);
+        }
+
         if (chasePlayer)
         {
             UpdateTarget();

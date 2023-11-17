@@ -5,27 +5,31 @@ using UnityEngine;
 public class SlashSpell : Spell
 {
     [SerializeField] private float _slashTime = 0.5f;
-    [SerializeField] private float _extraOffsetY = 0.5f;
+    [SerializeField] private Vector3 _extraOffset;
     [SerializeField] private float _miniDelayBetweenSlashes = 0.1f;
-    private float _startingCooldown = 0;
     private bool _modifyParticles = false;
 
     public override IEnumerator CastSpell()
     {
-        _startingCooldown = cooldown;
+        startingCooldown = cooldown;
         cooldown = Mathf.Infinity;
+        float scaleX = 1;
 
         for (int i = 0; i < castAmount; i++)
         {
-            float offsetY = 0;
+            Vector3 offset = Vector3.zero;
+            List<SpellEffect> usedSpellEffects = new List<SpellEffect>();
 
             for (int j = 0; j < effectAmount; j++)
             {
                 SpellEffect spellEffect = spellEffectPool.Get();
                 spellEffect.damage = damage;
-                spellEffect.transform.localPosition = new Vector3(0, offsetY, 0);
+                spellEffect.transform.localPosition = offset;
+                spellEffect.transform.localScale = new Vector3(scaleX, 1, 1);
 
-                offsetY += _extraOffsetY;
+                usedSpellEffects.Add(spellEffect);
+
+                offset += _extraOffset;
 
                 SpellVfxManager spellVfx = spellEffect.GetComponent<SpellVfxManager>();
 
@@ -44,9 +48,16 @@ public class SlashSpell : Spell
             _modifyParticles = false;
 
             yield return new WaitForSeconds(_slashTime);
+
+            foreach (var effect in usedSpellEffects)
+            {
+                spellEffectPool.Release(effect);
+            }
+
+            scaleX *= -1;
         }
 
-        cooldown = _startingCooldown;
+        cooldown = startingCooldown;
     }
 
     private void Start()
