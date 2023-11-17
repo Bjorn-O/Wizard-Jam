@@ -22,6 +22,9 @@ public abstract class Spell : MonoBehaviour
     public int effectAmount;
     public int castAmount;
 
+    [Header("Meta Stats")]
+    [SerializeField] protected float multiCastDelay;
+
     [Header("Mods")]
     [SerializeField] protected List<Modifier> modifiers = new List<Modifier>();
     public List<Modifier> Modifiers { get { return modifiers; } }
@@ -49,7 +52,7 @@ public abstract class Spell : MonoBehaviour
         manaCost = baseManaCost;
         cooldown = baseCoolDown;
         effectScale = baseEffectScale;
-        effectAmount = baseCastAmount;
+        effectAmount = baseEffectAmount;
         castAmount = baseCastAmount;
 
         if (poolSize > 1)
@@ -60,7 +63,7 @@ public abstract class Spell : MonoBehaviour
 
     public abstract IEnumerator CastSpell();
 
-    //protected abstract void FireSpellEffect(SpellEffect effect, float amount);
+    protected abstract void FireSpellEffect(SpellEffect effect, float amount);
 
     public virtual void AddModifier(Modifier mod)
     {

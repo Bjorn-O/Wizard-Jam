@@ -31,7 +31,6 @@ public class Modifier : ScriptableObject
         //if (!targetSpell.HasModifierSlot) return;
 
         _spell = targetSpell;
-
         ApplyMod();
     }
 
