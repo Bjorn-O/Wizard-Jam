@@ -45,6 +45,7 @@ public abstract class Spell : MonoBehaviour
 
     protected Dictionary<Stats, Ref<float>> statValuePairs = new Dictionary<Stats, Ref<float>>();
     protected float startingCooldown = 0;
+    private int _appliedMods = 0;
 
     private void Awake()
     {
@@ -105,6 +106,18 @@ public abstract class Spell : MonoBehaviour
         }
 
         return elements;
+    }
+
+    public void CountAppliedModifiers()
+    {
+        _appliedMods++;
+
+        if (_appliedMods >= Modifiers.Count)
+        {
+            OnApplyModifiers?.Invoke();
+
+            _appliedMods = 0;
+        }
     }
 
     public bool HasModifierSlot { get { return (modifiers.Count < 3); } }

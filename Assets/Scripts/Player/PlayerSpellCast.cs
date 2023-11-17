@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerSpellCast : MonoBehaviour
 {
-    private CharacterStats playerStats;
     private HotbarUI hotbarUI;
+    private CharacterStats playerStats;
 
     [SerializeField] private Spell[] spells = new Spell[4];
 

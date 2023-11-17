@@ -7,14 +7,16 @@ public class DamageSpellEffect : SpellEffect
     [Header("Physics force")]
     [SerializeField] private float forceMultiplier = 1;
     [SerializeField] private Transform forcePoint;
+    [SerializeField] private string checkTag = "Enemy";
 
     public override void OnTriggerEnter(Collider other)
     {
-        if (other.attachedRigidbody != null && other.attachedRigidbody.CompareTag("Enemy"))
+        if (other.attachedRigidbody != null && other.attachedRigidbody.CompareTag(checkTag))
         {
             CharacterStats enemyStats = other.attachedRigidbody.GetComponent<CharacterStats>();
 
-            enemyStats.TakeDamage(damage, null, (other.transform.position - forcePoint.position).normalized * (damage * forceMultiplier));
+            enemyStats.TakeDamage(damage, null, forcePoint != null ? 
+                (other.transform.position - forcePoint.position).normalized * (damage * forceMultiplier) : Vector3.zero);
         }
     }
 }

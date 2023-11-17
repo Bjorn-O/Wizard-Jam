@@ -128,7 +128,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 0.0019133855, y: 0.0018796222, z: 0.000011761472}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -172,11 +172,13 @@ GameObject:
   m_Component:
   - component: {fileID: 5341398465304860097}
   - component: {fileID: 4331232471891406332}
+  - component: {fileID: 1459871298295909408}
   - component: {fileID: 8645859141164908087}
   - component: {fileID: 2760700444059416021}
   - component: {fileID: 5088425803776816557}
   - component: {fileID: 1444785115482607239}
   - component: {fileID: 9150826493055776390}
+  - component: {fileID: 4972749803726281331}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -198,6 +200,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5785224784059009523}
+  - {fileID: 273724691607602729}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &4331232471891406332
@@ -222,6 +225,23 @@ NavMeshAgent:
   m_BaseOffset: 0.9
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
+--- !u!114 &1459871298295909408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549857875660583545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50f1c8aa34e5efa4f914c52ea799df0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spells:
+  - {fileID: 6219065984435553400}
+  _distanceToCast: 2.5
+  _distanceToCastSameAsStop: 1
+  _delaySpellcastTime: 1
 --- !u!54 &8645859141164908087
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -336,6 +356,56 @@ MonoBehaviour:
     followBone: {fileID: 2516514648029962974}
   - followTransform: {fileID: 408245817303663650}
     followBone: {fileID: 1478960601578190796}
+--- !u!114 &4972749803726281331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549857875660583545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b91f402bd93c766449a64b69eed3d097, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  excludeSystems: []
+  objectEffects: []
+  materialsToChange:
+  - {fileID: 2100000, guid: 5f402d1520e5fa74fa21e08f85b71370, type: 2}
+  elementalEffects: []
+  emmisionRateModMultiplier: 0
+--- !u!1 &552408159945611536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 273724691607602729}
+  m_Layer: 7
+  m_Name: Spells
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &273724691607602729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552408159945611536}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5682807876184083827}
+  m_Father: {fileID: 5341398465304860097}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &629960183135742457
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,7 +752,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 0.000008878077, y: 0.0032650752, z: -0.00038306467}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1217,7 +1287,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: -0.0000000014697437, y: 0.0031696304, z: -0.0000000012805684}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:
@@ -1640,7 +1710,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: -0.0019210498, y: 0.0018796237, z: 0.00001175862}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -1793,6 +1863,84 @@ Transform:
   m_Children: []
   m_Father: {fileID: 408245817303663650}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7027539571509884886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5682807876184083827}
+  - component: {fileID: 6219065984435553400}
+  m_Layer: 7
+  m_Name: MeleeAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5682807876184083827
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7027539571509884886}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 273724691607602729}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6219065984435553400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7027539571509884886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8722b50a6c6a6f8469de74742269556a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 10
+  baseManaCost: 0
+  baseCoolDown: 0.5
+  baseEffectScale: 1
+  baseEffectAmount: 1
+  baseCastAmount: 1
+  damage: 0
+  manaCost: 0
+  cooldown: 0
+  effectScale: 0
+  effectAmount: 0
+  castAmount: 0
+  multiCastDelay: 0
+  modifiers: []
+  spellName: Magical Melee
+  spellIcon: {fileID: 0}
+  spellEffect: {fileID: 1781915189928856501, guid: d17d763578eadd347993548a7876c099,
+    type: 3}
+  poolSize: 8
+  poolParent: {fileID: 4290344718582754476}
+  onSpellCast:
+    m_PersistentCalls:
+      m_Calls: []
+  onSpellCancelled:
+    m_PersistentCalls:
+      m_Calls: []
+  OnApplyModifiers:
+    m_PersistentCalls:
+      m_Calls: []
+  _anim: {fileID: 5826665110964801005}
+  _attackTime: 1
+  _casingIntensity: -2
+  _offset: {x: 0.001, y: 0, z: 0.001}
+  _magicalWeaponMat: {fileID: 2100000, guid: bade24d6d4c60614e9a64a81c4d9a616, type: 2}
 --- !u!1 &7076611451310878989
 GameObject:
   m_ObjectHideFlags: 0
@@ -2242,7 +2390,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: -2.3283067e-10, y: 0.0031696316, z: 0.0000000013387762}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:
