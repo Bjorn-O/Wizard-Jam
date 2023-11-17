@@ -21820,7 +21820,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   castPoint: {fileID: 0}
+  playerPoint: {fileID: 0}
   castSpreadDegrees: 0
+  curve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1995266699
 PrefabInstance:
   m_ObjectHideFlags: 0
