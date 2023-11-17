@@ -49,7 +49,7 @@ public class Modifier : ScriptableObject
             //targetEffect.OnHitTrigger += component.OnHit; 
         }
 
-        _spell.OnApplyModifiers.Invoke();
+        _spell.CountAppliedModifiers();
     }
 
     // TO DO: Remove Modifier

@@ -22,4 +22,7 @@ MonoBehaviour:
   - operation: 2
     targetStat: 2
     value: 1.5
+  - operation: 2
+    targetStat: 0
+    value: 0.75
   onHitEffects: []
