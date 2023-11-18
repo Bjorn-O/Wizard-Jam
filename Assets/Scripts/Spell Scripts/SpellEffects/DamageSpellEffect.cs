@@ -7,11 +7,14 @@ public class DamageSpellEffect : SpellEffect
     [Header("Physics force")]
     [SerializeField] private float forceMultiplier = 1;
     [SerializeField] private Transform forcePoint;
-    [SerializeField] private string checkTag = "Enemy";
+    [SerializeField] private string checkLayer = "Enemy";
 
     public override void OnTriggerEnter(Collider other)
     {
-        if (other.attachedRigidbody != null && other.attachedRigidbody.CompareTag(checkTag))
+        int targetMask = LayerMask.NameToLayer(checkLayer);
+        if (targetMask == -1) return;
+
+        if (other.attachedRigidbody != null && other.gameObject.layer == targetMask)
         {
             CharacterStats enemyStats = other.attachedRigidbody.GetComponent<CharacterStats>();
 
