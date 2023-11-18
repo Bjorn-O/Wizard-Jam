@@ -4952,11 +4952,7 @@ MonoBehaviour:
   excludeSystems:
   - {fileID: 6048177045514294032}
   objectEffects: []
-  materialsToChange:
-  - {fileID: 2100000, guid: 4bab0f95134663b4c9c3dd73939c0ff1, type: 2}
-  - {fileID: 2100000, guid: cbb6f419bbe7c6e4d9ce7e0322aa267d, type: 2}
-  - {fileID: 2100000, guid: 59b66e1956031654985c136e6927a7d8, type: 2}
-  - {fileID: 2100000, guid: 39029f13e4f0bd94493ed939a7feff9c, type: 2}
+  materialsToChange: []
   elementalEffects: []
   emmisionRateModMultiplier: 0.75
 --- !u!1 &1308365375310989978

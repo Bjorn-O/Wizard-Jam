@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Bolt : SpellEffect
 {
@@ -12,6 +13,9 @@ public class Bolt : SpellEffect
     [SerializeField] private string checkLayer = "Enemy";
     [SerializeField] GameObject hitEffect;
     [SerializeField] private float effectTimer;
+
+    public UnityEvent OnHitEvent;
+    public bool addedEventListener;
 
     private void Update()
     {
@@ -32,7 +36,8 @@ public class Bolt : SpellEffect
         }
 
         var hitMark = Instantiate(hitEffect, transform.position, Quaternion.identity);
+        
         Destroy(hitMark, effectTimer);
-        Destroy(gameObject);
+        OnHitEvent.Invoke();
     }
 }
