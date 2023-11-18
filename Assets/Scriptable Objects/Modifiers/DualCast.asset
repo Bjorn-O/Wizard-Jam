@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DualCast
   m_EditorClassIdentifier: 
   keyword: Twin
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: d2633059a3e068e46b6deac17469b72a, type: 3}
   element: 0
   mods:
   - operation: 2

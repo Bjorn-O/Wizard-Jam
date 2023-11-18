@@ -11,11 +11,13 @@ public class EnemyReferences : MonoBehaviour
     [HideInInspector] public NavMeshAgent navMeshAgent;
     [HideInInspector] public CharacterStats characterStats;
     [HideInInspector] public EnemyDamage enemyDamage;
+    [HideInInspector] public EnemySpellcast enemySpellcast;
 
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         characterStats = GetComponent<CharacterStats>();
         enemyDamage = GetComponent<EnemyDamage>();
+        enemySpellcast = GetComponent<EnemySpellcast>();
     }
 }

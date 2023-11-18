@@ -72,6 +72,7 @@ public class DashSpell : Spell
             {
                 SpellEffect effect = spellEffectPool.Get();
                 effect.damage = damage;
+                effect.transform.localScale = Vector3.one * effectScale;
                 effect.transform.localPosition = new Vector3(0, 0, offsetZ);
                 offsetZ += _effectExtraOffsetZ;
 

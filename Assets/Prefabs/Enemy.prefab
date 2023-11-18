@@ -178,7 +178,6 @@ GameObject:
   - component: {fileID: 5088425803776816557}
   - component: {fileID: 1444785115482607239}
   - component: {fileID: 9150826493055776390}
-  - component: {fileID: 4972749803726281331}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -284,6 +283,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 0}
   characterStats: {fileID: 0}
   enemyDamage: {fileID: 0}
+  enemySpellcast: {fileID: 0}
 --- !u!114 &5088425803776816557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,10 +322,34 @@ MonoBehaviour:
   maxMana: 50
   OnHit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9150826493055776390}
+        m_TargetAssemblyTypeName: EnemyDamage, Assembly-CSharp
+        m_MethodName: StartBlinkEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9150826493055776390}
+        m_TargetAssemblyTypeName: EnemyDamage, Assembly-CSharp
+        m_MethodName: Die
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &9150826493055776390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,24 +380,9 @@ MonoBehaviour:
     followBone: {fileID: 2516514648029962974}
   - followTransform: {fileID: 408245817303663650}
     followBone: {fileID: 1478960601578190796}
---- !u!114 &4972749803726281331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 549857875660583545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b91f402bd93c766449a64b69eed3d097, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  excludeSystems: []
-  objectEffects: []
-  materialsToChange:
-  - {fileID: 2100000, guid: 5f402d1520e5fa74fa21e08f85b71370, type: 2}
-  elementalEffects: []
-  emmisionRateModMultiplier: 0
+  FadedOut:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &552408159945611536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1754,7 +1763,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5785224784059009523}
   - component: {fileID: 2591888152449188889}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

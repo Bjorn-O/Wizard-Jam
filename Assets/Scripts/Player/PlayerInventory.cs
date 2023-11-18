@@ -1,0 +1,55 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerInventory : MonoBehaviour
+{
+    //DEBUG ONLY
+    [SerializeField] private List<Modifier> _testMods = new List<Modifier>();
+    private List<Modifier> _modifiers = new List<Modifier>();
+    private Dictionary<Modifier, int> _modifierCount = new Dictionary<Modifier, int>();
+
+    private InventoryUI inventoryUI;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        inventoryUI = FindObjectOfType<InventoryUI>();
+
+        foreach (var modifier in _testMods)
+        {
+            AddMod(modifier);
+        }
+    }
+
+    public void AddMod(Modifier modifier)
+    {
+        if (_modifiers.Contains(modifier))
+        {
+            _modifierCount[modifier]++;
+            inventoryUI.UpdateModifier(modifier, _modifierCount[modifier]);
+            return;
+        }
+
+        _modifiers.Add(modifier);
+        _modifierCount.Add(modifier, 1);
+        inventoryUI.UpdateModifier(modifier, 1);
+    }
+
+    public void RemoveMod(Modifier modifier)
+    {
+        if (!_modifiers.Contains(modifier))
+            return;
+
+        if (_modifierCount[modifier] > 1)
+        {
+            _modifierCount[modifier]--;
+            inventoryUI.UpdateModifier(modifier, 0);
+            return;
+        }
+
+        inventoryUI.UpdateModifier(modifier, 0);
+        _modifiers.Remove(modifier);
+        _modifierCount.Remove(modifier);
+    }
+}

@@ -25,6 +25,7 @@ public class EnemyMovement : MonoBehaviour
     
     private void Awake()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _anim = GetComponentInChildren<Animator>();
     }
@@ -78,7 +79,7 @@ public class EnemyMovement : MonoBehaviour
         RaycastHit hit;
         bool canSeePlayer = Physics.Raycast(transform.position, target.position - transform.position, out hit);
         Debug.DrawRay(transform.position, target.position - transform.position, Color.red);
-        if(hit.collider.CompareTag("Player"))
+        if(hit.collider != null && hit.collider.CompareTag("Player"))
         {
             chasePlayer = false;
             StartCoroutine(StopMove(0.2f));

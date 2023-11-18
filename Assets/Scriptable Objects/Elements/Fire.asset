@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fire
   m_EditorClassIdentifier: 
   keyword: Fire
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 4e05de9c5538bb94e9a683884dd77803, type: 3}
   element: 1
   mods:
   - operation: 2

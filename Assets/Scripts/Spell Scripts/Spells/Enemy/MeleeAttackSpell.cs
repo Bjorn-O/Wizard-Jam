@@ -60,6 +60,7 @@ public class MeleeAttackSpell : Spell
         {
             SpellEffect pooledEffect = spellEffectPool.Get();
             pooledEffect.damage = damage;
+            pooledEffect.transform.localScale = Vector3.one * effectScale;
             MeleeWeaponTrail trail = pooledEffect.GetComponent<MeleeWeaponTrail>();
             _trails.Add(trail);
             trail.Emit = false;

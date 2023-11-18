@@ -38,15 +38,6 @@ public class PlayerLook : MonoBehaviour
     private void Update()
     {
         CamTilt();
-
-        //Placeholder
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            EnemyReferences enemy = FindObjectOfType<EnemyReferences>(true);
-            enemy.gameObject.SetActive(true);
-            enemy.enemyDamage.ResetAllSettings();
-            enemy.characterStats.ResetStats();
-        }
     }
 
     private void OnLook(InputValue inputValue)

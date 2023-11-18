@@ -1,20 +1,19 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Modifier", menuName = "SpellCastingComponents/Modifier", order = 1)]
 public class Modifier : ScriptableObject
 {
     [SerializeField] private string keyword;
     public string Keyword { get { return keyword; } }
-    [SerializeField] private Image icon;
+    [SerializeField] private Sprite icon;
+    public Sprite Icon { get { return icon; } }
     [SerializeField] private Elements element;
     public Elements Element { get { return element; } }
 
     [SerializeField] private Mod[] mods;
     [SerializeField] private OnHitEffect[] onHitEffects;
-
 
     private Spell _spell;
 
@@ -24,6 +23,14 @@ public class Modifier : ScriptableObject
             { Operators.Subtract, (a, b) => a - b },
             { Operators.Multiply, (a, b) => a * b },
             { Operators.Divide, (a, b) => a / b }
+    };
+
+    Dictionary<Operators, Func<float, float, float>> reverseOperatorDictionary = new Dictionary<Operators, Func<float, float, float>>
+    {
+            { Operators.Add, (a, b) => a - b },
+            { Operators.Subtract, (a, b) => a + b },
+            { Operators.Multiply, (a, b) => a / b },
+            { Operators.Divide, (a, b) => a * b }
     };
 
     public void SetSpell(Spell targetSpell)
@@ -51,9 +58,15 @@ public class Modifier : ScriptableObject
 
         _spell.CountAppliedModifiers();
     }
-
-    // TO DO: Remove Modifier
-
+    
+    public void RemoveMod()
+    {
+        foreach (var mod in mods)
+        {
+            Ref<float> statRef = _spell.GetStatRefByEnum(mod.targetStat);
+            statRef.Value = reverseOperatorDictionary[mod.operation](statRef.Value, mod.value);
+        }
+    }
 }
 
 public class Ref<T>

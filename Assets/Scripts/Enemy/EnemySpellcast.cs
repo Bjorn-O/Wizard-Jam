@@ -14,6 +14,8 @@ public class EnemySpellcast : MonoBehaviour
     private float[] spellCooldowns = new float[4];
     private float _delayTimer = 0;
 
+    public Spell[] Spells { get { return spells; } }
+
     // Start is called before the first frame update
     void Start()
     {

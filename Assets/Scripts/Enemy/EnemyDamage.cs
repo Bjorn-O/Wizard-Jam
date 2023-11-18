@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class EnemyDamage : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class EnemyDamage : MonoBehaviour
     private List<Transform> _oldParentRagdoll = new List<Transform>();
     private Dictionary<Transform, ResetRagdollTransform> _oldTransformBeforeRagdoll = new Dictionary<Transform, ResetRagdollTransform>();
     private bool _ragdolling = false;
+
+    public UnityEvent FadedOut;
 
     private void Awake()
     {
@@ -191,12 +194,11 @@ public class EnemyDamage : MonoBehaviour
                 targetColor.a = 0;
 
                 mat.color = Color.Lerp(color, targetColor, elapsedTime / _fadeDuration);
-                print(mat.color);
                 yield return null;
             }
         }
 
-        gameObject.SetActive(false);
+        FadedOut?.Invoke();
     }
 }
 
