@@ -62,7 +62,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a57b12865c23f7c4d8c5b4fb93b358d8, type: 2}
   - {fileID: 11400000, guid: 604076794d1a0ed4895a680875eafe00, type: 2}
   spellName: Slash
-  spellIcon: {fileID: 0}
+  spellIcon: {fileID: 21300000, guid: 54567ea946b18214693140f756a8381e, type: 3}
   spellEffect: {fileID: 1554448914136982788, guid: f18cc60f9d336cb43a56e86d86eb02b3,
     type: 3}
   poolSize: 6
@@ -140,8 +140,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  spellName: 
-  spellIcon: {fileID: 0}
+  spellName: Magic bolt
+  spellIcon: {fileID: 21300000, guid: 44835648c4a395b4eb14f71363c65e16, type: 3}
   spellEffect: {fileID: 0}
   poolSize: 4
   poolParent: {fileID: 0}
@@ -156,7 +156,6 @@ MonoBehaviour:
       m_Calls: []
   castPoint: {fileID: 0}
   playerPoint: {fileID: 0}
-  castSpreadDegrees: 0
   curve:
     serializedVersion: 2
     m_Curve: []
@@ -466,6 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c068b0d3d8b0d3a4e93e4de7dccf1286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _testMods: []
 --- !u!114 &5687895040732494941
 MonoBehaviour:
   m_ObjectHideFlags: 0

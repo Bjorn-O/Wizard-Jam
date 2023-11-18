@@ -43,6 +43,18 @@ public class EnemySpellcast : MonoBehaviour
         }
     }
 
+    public void ClearModsFromSpells()
+    {
+        foreach (var spell in spells)
+        {
+            if (spell == null)
+                continue;
+
+            spell.ClearModifiers();
+        }
+    }
+
+
     // Update is called once per frame
     void Update()
     {

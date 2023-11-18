@@ -14,7 +14,7 @@ public class PlayerInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inventoryUI = FindObjectOfType<InventoryUI>();
+        inventoryUI = FindObjectOfType<InventoryUI>(true);
 
         foreach (var modifier in _testMods)
         {

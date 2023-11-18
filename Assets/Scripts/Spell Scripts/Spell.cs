@@ -49,12 +49,7 @@ public abstract class Spell : MonoBehaviour
 
     private void Awake()
     {
-        damage = baseDamage;
-        manaCost = baseManaCost;
-        cooldown = baseCoolDown;
-        effectScale = baseEffectScale;
-        effectAmount = baseEffectAmount;
-        castAmount = baseCastAmount;
+        ResetStats();
 
         if (poolSize > 1)
         {
@@ -76,6 +71,22 @@ public abstract class Spell : MonoBehaviour
     {
         modifiers.Remove(mod);
         spellName = spellName.Replace(mod.Keyword + " ", "");
+    }
+
+    public virtual void ClearModifiers()
+    {
+        modifiers.Clear();
+        ResetStats();
+    }
+
+    public virtual void ResetStats()
+    {
+        damage = baseDamage;
+        manaCost = baseManaCost;
+        cooldown = baseCoolDown;
+        effectScale = baseEffectScale;
+        effectAmount = baseEffectAmount;
+        castAmount = baseCastAmount;
     }
 
     public Ref<float> GetStatRefByEnum(Stats stats)

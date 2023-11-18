@@ -89,6 +89,7 @@ public class EnemySpawner : MonoBehaviour
         enemy.characterStats.SetMaxStats(health, 50);
 
         enemy.characterStats.ResetStats();
+        enemy.enemySpellcast.ClearModsFromSpells();
         enemy.enemyDamage.ResetAllSettings();
 
         foreach (var spell in enemy.enemySpellcast.Spells)

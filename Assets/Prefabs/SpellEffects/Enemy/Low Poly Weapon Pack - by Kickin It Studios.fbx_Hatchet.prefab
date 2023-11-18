@@ -86,7 +86,7 @@ MonoBehaviour:
   hitEffects: []
   forceMultiplier: 1
   forcePoint: {fileID: 0}
-  checkTag: Player
+  checkLayer: Player
 --- !u!114 &4276742690569776049
 MonoBehaviour:
   m_ObjectHideFlags: 0
