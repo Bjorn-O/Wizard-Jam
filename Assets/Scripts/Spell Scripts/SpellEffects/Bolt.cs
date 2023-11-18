@@ -10,6 +10,8 @@ public class Bolt : SpellEffect
     [SerializeField] private float forceMultiplier = 1;
     [SerializeField] private float speed = 20;
     [SerializeField] private string checkLayer = "Enemy";
+    [SerializeField] GameObject hitEffect;
+    [SerializeField] private float effectTimer;
 
     private void Update()
     {
@@ -29,6 +31,8 @@ public class Bolt : SpellEffect
                 (other.transform.position - forcePoint.position).normalized * (damage * forceMultiplier) : Vector3.zero);
         }
 
-        Destroy(this.gameObject);
+        var hitMark = Instantiate(hitEffect, transform.position, Quaternion.identity);
+        Destroy(hitMark, effectTimer);
+        Destroy(gameObject);
     }
 }

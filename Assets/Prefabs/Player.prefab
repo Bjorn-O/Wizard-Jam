@@ -123,26 +123,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad2b049b8fcce24e9d0e3637f602dfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 0
+  baseDamage: 5
   baseManaCost: 0
-  baseCoolDown: 0
-  baseEffectScale: 0
-  baseEffectAmount: 0
-  baseCastAmount: 0
-  damage: 0
+  baseCoolDown: 1.5
+  baseEffectScale: 1
+  baseEffectAmount: 1
+  baseCastAmount: 1
+  damage: 1
   manaCost: 0
   cooldown: 0
-  effectScale: 0
-  effectAmount: 0
-  castAmount: 0
-  multiCastDelay: 0
+  effectScale: 1
+  effectAmount: 1
+  castAmount: 1
+  multiCastDelay: 0.5
   modifiers:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   spellName: Magic bolt
   spellIcon: {fileID: 21300000, guid: 44835648c4a395b4eb14f71363c65e16, type: 3}
-  spellEffect: {fileID: 0}
+  spellEffect: {fileID: 7777109839663737911, guid: 1e6398d05ff48d142816dbb4aa16136d,
+    type: 3}
   poolSize: 4
   poolParent: {fileID: 0}
   onSpellCast:
@@ -154,11 +155,38 @@ MonoBehaviour:
   OnApplyModifiers:
     m_PersistentCalls:
       m_Calls: []
-  castPoint: {fileID: 0}
-  playerPoint: {fileID: 0}
+  castPoint: {fileID: 5490615935201798294}
+  playerPoint: {fileID: 2411416594357185074}
   curve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: -1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -226,6 +254,37 @@ Transform:
   - {fileID: 4642890345769436148}
   - {fileID: 2000866812105117980}
   - {fileID: 5298171574537157082}
+  m_Father: {fileID: 2411416594357185074}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6572514609058084019
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5490615935201798294}
+  m_Layer: 3
+  m_Name: ShootPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5490615935201798294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6572514609058084019}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 2411416594357185074}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7189855169832719227
@@ -405,6 +464,7 @@ Transform:
   m_Children:
   - {fileID: 6916630102835612344}
   - {fileID: 724460584660369797}
+  - {fileID: 5490615935201798294}
   - {fileID: 7392981877184493735}
   - {fileID: 3877707879868369560}
   m_Father: {fileID: 0}
@@ -479,7 +539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spells:
-  - {fileID: 0}
+  - {fileID: 3619600747086408293}
   - {fileID: 7307198385060894070}
   - {fileID: 6642816262075025260}
   - {fileID: 0}

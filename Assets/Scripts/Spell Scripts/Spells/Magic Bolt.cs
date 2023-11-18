@@ -47,6 +47,7 @@ public class MagicBolt : Spell
 
                 // Sets the facing of each shot so they will spread out according to the Animation Curve
                 Vector3 shotDirection = new Vector3(shotPosition / 10, castPoint.transform.position.y, curve.Evaluate(shotPosition / 10));
+                print(shotDirection);
                 Vector3 shotPoint = transform.position + shotDirection;
                 float radial = Mathf.Atan2(transform.position.x, transform.position.z) - Mathf.Atan2(shotPoint.x, shotPoint.z);
                 float degrees = radial * (180 / Mathf.PI);
@@ -54,8 +55,9 @@ public class MagicBolt : Spell
                 //Spawn Spell and set position/rotation
                 SpellEffect bolt = spellEffectPool.Get();
                 bolt.transform.position = castPoint.position;
+                bolt.transform.rotation = castPoint.rotation;
                 bolt.transform.Rotate(0, degrees, 0);
-                
+                print(degrees);
                 //Apply Spell stats to object
                 bolt.transform.localScale *= effectScale;
                 bolt.damage = damage;
