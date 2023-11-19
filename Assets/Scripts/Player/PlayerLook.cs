@@ -29,8 +29,8 @@ public class PlayerLook : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
 
         _camera = Camera.main.transform;
     }

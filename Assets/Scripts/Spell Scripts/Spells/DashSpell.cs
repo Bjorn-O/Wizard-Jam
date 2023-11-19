@@ -28,6 +28,7 @@ public class DashSpell : Spell
 
     private int _extraCasts = 0;
     private bool _resetCastAmount = true;
+    private bool _modifyParticles;
 
     public override IEnumerator CastSpell()
     {
@@ -80,6 +81,12 @@ public class DashSpell : Spell
             }
         }
 
+        if (_modifyParticles)
+        {
+            _speedLines.ModifyParticleSystems(effectAmount, GetElementsFromMods().ToArray());
+            _modifyParticles = false;
+        }
+
         _speedLines.PlayEffect(modifiers.Count > 0);
         _speedLines.transform.position = _cam.transform.position + dir * _speedLinesOffsetZ;
         _speedLines.transform.LookAt(_speedLines.transform.position - (_cam.transform.position - _speedLines.transform.position));
@@ -105,7 +112,7 @@ public class DashSpell : Spell
         _cam = Camera.main;
         _startingCamFov = _cam.fieldOfView;
 
-        OnApplyModifiers.AddListener(() => _speedLines.ModifyParticleSystems(effectAmount, GetElementsFromMods().ToArray()));
+        OnApplyModifiers.AddListener(() => { _modifyParticles = true; });
     }
 
     private void Update()

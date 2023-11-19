@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerSpellCast : MonoBehaviour
 {
     private HotbarUI hotbarUI;
+    private SpellPanelUI spellPanelUI;
     private CharacterStats playerStats;
 
     [SerializeField] private Spell[] spells = new Spell[4];
@@ -16,6 +17,7 @@ public class PlayerSpellCast : MonoBehaviour
     {
         playerStats = GetComponent<CharacterStats>();
         hotbarUI = FindObjectOfType<HotbarUI>();
+        spellPanelUI = FindObjectOfType<SpellPanelUI>();
 
         for (int i = 0; i < spells.Length; i++)
         {
@@ -25,6 +27,7 @@ public class PlayerSpellCast : MonoBehaviour
                 continue;
 
             hotbarUI.UpdateIcon(i, spell.SpellIcon);
+            spellPanelUI.UpdateSpellStats(spell);
         }
     }
 

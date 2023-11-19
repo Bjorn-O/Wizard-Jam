@@ -26,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _enemyExtraDifficultyHealth = 25;
 
     [Header("Spawn settings")]
-    [SerializeField] private BoxCollider[] _spawnBoxes;
+    [SerializeField] private Transform[] _spawnBoxes;
     [SerializeField] private float _spawnY = 1;
     [SerializeField] private int _maxEnemies = 30;
 
@@ -72,10 +72,10 @@ public class EnemySpawner : MonoBehaviour
 
         int rand = Random.Range(0, _spawnBoxes.Length);
 
-        BoxCollider chosenBox = _spawnBoxes[rand];
+        Transform chosenBox = _spawnBoxes[rand];
         Vector3 center = chosenBox.transform.position;
-        float x = chosenBox.size.x / 2;
-        float z = chosenBox.size.z / 2;
+        float x = chosenBox.lossyScale.x / 2;
+        float z = chosenBox.lossyScale.z / 2;
         Vector3 randomPosInBox = center + new Vector3(Random.Range(-x, x), 0, Random.Range(-z, z));
         randomPosInBox.y = _spawnY;
         enemy.transform.position = randomPosInBox;

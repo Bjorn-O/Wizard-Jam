@@ -32,6 +32,7 @@ public abstract class Spell : MonoBehaviour
     [Header("Other settings")]
     [SerializeField] protected string spellName;
     [SerializeField] protected Sprite spellIcon;
+    public string SpellName { get { return spellName; } }
     public Sprite SpellIcon { get { return spellIcon; } }
 
     [SerializeField] protected SpellEffect spellEffect;

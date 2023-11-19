@@ -57,10 +57,7 @@ MonoBehaviour:
   effectAmount: 0
   castAmount: 0
   multiCastDelay: 0
-  modifiers:
-  - {fileID: 11400000, guid: 0a7bfe3caed9fae41a99b476b1c690fa, type: 2}
-  - {fileID: 11400000, guid: a57b12865c23f7c4d8c5b4fb93b358d8, type: 2}
-  - {fileID: 11400000, guid: 604076794d1a0ed4895a680875eafe00, type: 2}
+  modifiers: []
   spellName: Slash
   spellIcon: {fileID: 21300000, guid: 54567ea946b18214693140f756a8381e, type: 3}
   spellEffect: {fileID: 1554448914136982788, guid: f18cc60f9d336cb43a56e86d86eb02b3,
@@ -667,10 +664,7 @@ MonoBehaviour:
   effectAmount: 0
   castAmount: 0
   multiCastDelay: 0
-  modifiers:
-  - {fileID: 11400000, guid: a57b12865c23f7c4d8c5b4fb93b358d8, type: 2}
-  - {fileID: 11400000, guid: 83cc9dff7c69cf24baced6544310f238, type: 2}
-  - {fileID: 11400000, guid: 83cc9dff7c69cf24baced6544310f238, type: 2}
+  modifiers: []
   spellName: Dash
   spellIcon: {fileID: 21300000, guid: b93540d8d71c248488694a75ed52d2d8, type: 3}
   spellEffect: {fileID: 2522276572912279875, guid: 945034681a1e3dd42a50d12fb1eca927,

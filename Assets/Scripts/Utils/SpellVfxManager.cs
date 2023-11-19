@@ -112,7 +112,7 @@ public class SpellVfxManager : MonoBehaviour
             }
         }
 
-        print(elements);
+        //print(elements[0]);
     }
 
     public void PlayEffect(bool showObjectEffects)
