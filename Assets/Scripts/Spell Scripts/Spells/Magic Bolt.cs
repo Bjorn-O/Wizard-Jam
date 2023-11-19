@@ -3,16 +3,15 @@ using UnityEngine;
 
 public class MagicBolt : Spell
 {
-    [SerializeField] private Transform castPoint;
-    [SerializeField] private Transform playerPoint;
+    [SerializeField] private Transform castTransform;
+    [SerializeField] private Transform camTransform;
     [SerializeField] private AnimationCurve curve;
 
-    private void Update()
+    private bool _modifyParticles;
+
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine("CastSpell");
-        }
+        OnApplyModifiers.AddListener(() => { _modifyParticles = true; });
     }
 
     public override void AddModifier(Modifier mod)
@@ -36,7 +35,7 @@ public class MagicBolt : Spell
     {
         if (amount == 1)
         {
-            var bolt = Instantiate(effect, castPoint.position, castPoint.rotation);
+            var bolt = Instantiate(effect, castTransform.position, castTransform.rotation);
         } else
         {
             float shotPosition = 0 - Mathf.Floor(amount / 2);
@@ -46,20 +45,34 @@ public class MagicBolt : Spell
                 if (amount % 2 == 0 && shotPosition == 0) shotPosition++;
 
                 // Sets the facing of each shot so they will spread out according to the Animation Curve
-                Vector3 shotDirection = new Vector3(shotPosition / 10, castPoint.transform.position.y, curve.Evaluate(shotPosition / 10));
-                Vector3 shotPoint = transform.position + shotDirection;
-                float radial = Mathf.Atan2(transform.position.x, transform.position.z) - Mathf.Atan2(shotPoint.x, shotPoint.z);
+                Vector3 shotDirection = new Vector3(shotPosition / 10, castTransform.transform.localPosition.y, curve.Evaluate(shotPosition / 10));
+                float radial = Mathf.Atan2(shotDirection.x, shotDirection.z);
                 float degrees = radial * (180 / Mathf.PI);
 
                 //Spawn Spell and set position/rotation
                 SpellEffect bolt = spellEffectPool.Get();
-                bolt.transform.position = castPoint.position;
+                bolt.transform.position = castTransform.position;
+                bolt.transform.rotation = camTransform.rotation;
                 bolt.transform.Rotate(0, degrees, 0);
-                
+                print(degrees);
+
                 //Apply Spell stats to object
                 bolt.transform.localScale *= effectScale;
                 bolt.damage = damage;
+                if (!(bolt as Bolt).addedEventListener)
+                {
+                    (bolt as Bolt).OnHitEvent.AddListener(() => { spellEffectPool.Release(bolt); });
+                    (bolt as Bolt).addedEventListener = true;
+                }
 
+                //Checks if the bolt needs to be changed element. This is stupid and dumb but we hadn't prepared for this in the framework. Too bad Bas.
+                if (_modifyParticles)
+                {
+                    SpellVfxManager spellVfx = bolt.GetComponent<SpellVfxManager>();
+                    spellVfx.ModifyParticleSystems(effectAmount, GetElementsFromMods().ToArray());
+                }
+
+                // Give bolt action to release
                 shotPosition++;
             }
         }
