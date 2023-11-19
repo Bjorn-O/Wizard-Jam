@@ -17,7 +17,7 @@ public class PlayerSpellCast : MonoBehaviour
     {
         playerStats = GetComponent<CharacterStats>();
         hotbarUI = FindObjectOfType<HotbarUI>();
-        spellPanelUI = FindObjectOfType<SpellPanelUI>();
+        spellPanelUI = FindObjectOfType<SpellPanelUI>(true);
 
         for (int i = 0; i < spells.Length; i++)
         {

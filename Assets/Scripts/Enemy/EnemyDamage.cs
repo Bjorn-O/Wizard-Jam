@@ -89,7 +89,7 @@ public class EnemyDamage : MonoBehaviour
 
         foreach (var ragdollBody in ragdollBodies)
         {
-            ragdollBody.gameObject.layer = LayerMask.NameToLayer("Enemy");
+            //ragdollBody.gameObject.layer = LayerMask.NameToLayer("Enemy");
             ragdollBody.isKinematic = true;
 
             Transform ragdollTransformBody = ragdollBody.transform;
@@ -158,7 +158,7 @@ public class EnemyDamage : MonoBehaviour
 
         foreach (var ragdollBody in ragdollBodies)
         {
-            ragdollBody.gameObject.layer = LayerMask.NameToLayer("Ragdoll");
+            //ragdollBody.gameObject.layer = LayerMask.NameToLayer("Ragdoll");
             ragdollBody.isKinematic = false;
         }
 

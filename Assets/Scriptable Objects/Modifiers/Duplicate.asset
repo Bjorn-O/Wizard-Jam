@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Duplicate
   m_EditorClassIdentifier: 
   keyword: Duplicated
+  description: Duplicates the effect of the spell
   icon: {fileID: 21300000, guid: 5a121bd001ce504479ccd84213addc68, type: 3}
   element: 0
   mods:

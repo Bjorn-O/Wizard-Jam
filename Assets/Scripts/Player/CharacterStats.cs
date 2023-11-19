@@ -13,6 +13,7 @@ public class CharacterStats : MonoBehaviour
     private float startingMana = 100;
 
     public float Health { get { return health; } set { health = Mathf.Clamp(value, 0, maxHealth); } }
+    public float MaxHealth { get { return maxHealth; } }
     public float Mana { get { return mana; } set { mana = Mathf.Clamp(value, 0, maxMana); } }
 
     public float StartingHealth { get { return startingHealth; } }

@@ -12,10 +12,14 @@ public class ModSlotUI : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (modifier)
-            return;
-
         DraggableMod dragMod = eventData.pointerDrag.GetComponent<DraggableMod>();
+
+        if (modifier)
+        {
+            dragMod.transform.SetParent(dragMod.parentBeforeDrag, false);
+            return;
+        }
+       
         dragMod.inInventory = false;
         dragMod.GetComponent<RectTransform>().sizeDelta = Vector2.one * _size;
         dragMod.transform.SetParent(_modParent, false);

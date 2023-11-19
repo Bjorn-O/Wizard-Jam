@@ -10,6 +10,7 @@ public class SpellVfxManager : MonoBehaviour
     [SerializeField] private List<ParticleSystem> excludeSystems = new List<ParticleSystem>();
     [SerializeField] private GameObject[] objectEffects;
     [SerializeField] private Material[] materialsToChange;
+    [SerializeField] private List<Color> _originalColorMaterials = new List<Color>();
     [SerializeField] private ElementalEffect[] elementalEffects;
 
     private Dictionary<ParticleSystem, ElementalEffect> elementEffectPsPairs = new Dictionary<ParticleSystem, ElementalEffect>();
@@ -41,6 +42,11 @@ public class SpellVfxManager : MonoBehaviour
         {
             elementEffectPsPairs.Add(item.effect.GetComponent<ParticleSystem>(), item);
             item.effect.SetActive(false);
+        }
+
+        foreach (var mat in materialsToChange)
+        {
+            _originalColorMaterials.Add(mat.color);
         }
     }
 
@@ -92,8 +98,15 @@ public class SpellVfxManager : MonoBehaviour
 
         for (int i = 0; i < materialsToChange.Length; i++)
         {
-            finalColor.a = materialsToChange[i].color.a;
-            materialsToChange[i].color = finalColor;
+            if (finalColor != Color.black)
+            {
+                finalColor.a = materialsToChange[i].color.a;
+                materialsToChange[i].color = finalColor;
+            }
+            else
+            {
+                materialsToChange[i].color = _originalColorMaterials[i];
+            }            
         }
 
         for (int i = 0; i < elementalEffects.Length; i++)

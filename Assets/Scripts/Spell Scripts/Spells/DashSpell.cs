@@ -7,6 +7,7 @@ public class DashSpell : Spell
 {
     private Rigidbody _rb;
     private PlayerMovement _playerMov;
+    private CharacterStats _characterStats;
     private Collider _playerCol;
     private Camera _cam;
 
@@ -106,6 +107,7 @@ public class DashSpell : Spell
     {
         _playerMov = FindObjectOfType<PlayerMovement>();
         _rb = _playerMov.GetComponent<Rigidbody>();
+        _characterStats = _rb.GetComponent<CharacterStats>();
         _playerCol = _rb.GetComponentInChildren<Collider>();
 
         _speedLinesOffsetZ = _speedLines.transform.localPosition.z;
@@ -145,7 +147,7 @@ public class DashSpell : Spell
 
             pooledSpellEffects.Clear();
 
-            if (_extraCasts <= 0)
+            if (_extraCasts <= 0 || _characterStats.Mana < manaCost)
             {
                 _resetCastAmount = true;
                 cooldown = startingCooldown;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -9,11 +10,15 @@ public class PlayerInventory : MonoBehaviour
     private List<Modifier> _modifiers = new List<Modifier>();
     private Dictionary<Modifier, int> _modifierCount = new Dictionary<Modifier, int>();
 
+    private PanelManagerUI panelManagerUI;
     private InventoryUI inventoryUI;
+    private PlayerInput input;
 
     // Start is called before the first frame update
     void Start()
     {
+        input = GetComponent<PlayerInput>();
+        panelManagerUI = FindObjectOfType<PanelManagerUI>(true);
         inventoryUI = FindObjectOfType<InventoryUI>(true);
 
         foreach (var modifier in _testMods)
@@ -51,5 +56,13 @@ public class PlayerInventory : MonoBehaviour
         inventoryUI.UpdateModifier(modifier, 0);
         _modifiers.Remove(modifier);
         _modifierCount.Remove(modifier);
+    }
+
+    private void OnInventory()
+    {
+        bool showingPanels = panelManagerUI.ToggleInventoryAndCardPanel();
+        input.SwitchCurrentActionMap(showingPanels ? "UI": "Player");
+        Cursor.visible = showingPanels;
+        Cursor.lockState = showingPanels ? CursorLockMode.None : CursorLockMode.Locked;
     }
 }

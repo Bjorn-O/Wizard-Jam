@@ -7,6 +7,8 @@ public class Modifier : ScriptableObject
 {
     [SerializeField] private string keyword;
     public string Keyword { get { return keyword; } }
+    [SerializeField] private string description;
+    public string Description { get { return description; } }
     [SerializeField] private Sprite icon;
     public Sprite Icon { get { return icon; } }
     [SerializeField] private Elements element;

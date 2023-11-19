@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: DualCast
   m_EditorClassIdentifier: 
   keyword: Twin
+  description: Makes the spell cast twice (mana drains for every cast)
   icon: {fileID: 21300000, guid: d2633059a3e068e46b6deac17469b72a, type: 3}
   element: 0
   mods:

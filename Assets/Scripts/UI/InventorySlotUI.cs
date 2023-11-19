@@ -54,13 +54,29 @@ public class InventorySlotUI : MonoBehaviour, IDropHandler
     {
         DraggableMod dragMod = eventData.pointerDrag.GetComponent<DraggableMod>();
 
-        if (_count > 0 && _modifier)
-            return;
+        if (_count > 0 && _modifier != dragMod.modifier)
+        {
+            if (_modifier == dragMod.modifier)
+            {
+                UpdateSlot(null, _count + 1);
+                Destroy(dragMod.gameObject);
+                return;
+            }
+            else
+            {
+                dragMod.transform.SetParent(dragMod.parentBeforeDrag, false);
+                return;
+            }
+        }
 
+        dragMod.inventorySlotUI.Drop(dragMod);
+    }
+
+    public void Drop(DraggableMod dragMod)
+    {
         dragMod.transform.SetParent(_modParent, false);
         dragMod.parentBeforeDrag = _modParent;
         dragMod.GetComponent<RectTransform>().sizeDelta = Vector2.one * _size;
         dragMod.inInventory = true;
-        dragMod.inventorySlotUI = this;
     }
 }

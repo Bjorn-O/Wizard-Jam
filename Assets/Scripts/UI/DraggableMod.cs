@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DraggableMod : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DraggableMod : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Transform parentBeforeDrag;
     public Modifier modifier;
@@ -13,10 +13,14 @@ public class DraggableMod : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public ModSlotUI modSlotUI;
     private DraggableMod replacementMod;
     public bool inInventory = true;
+    public bool isReplacement = false;
     private Image _image;
+    private TooltipUI _tooltipUI;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        _tooltipUI.dragging = true;
+
         if (inInventory)
         {
             if (modifier == null)
@@ -24,7 +28,7 @@ public class DraggableMod : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 modifier = inventorySlotUI.SlottedModifier;
             }
 
-            if (inventorySlotUI.Count > 1 && replacementMod == null)
+            if (inventorySlotUI.Count > 1 && replacementMod == null && transform.parent.childCount < inventorySlotUI.Count)
             {
                 GameObject replacementObj = Instantiate(gameObject, transform.parent);
                 replacementMod = replacementObj.GetComponent<DraggableMod>();
@@ -50,6 +54,7 @@ public class DraggableMod : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnEndDrag(PointerEventData eventData)
     {
         _image.raycastTarget = true;
+        _tooltipUI.dragging = false;
 
         if (inInventory)
         {
@@ -74,5 +79,23 @@ public class DraggableMod : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         _image = GetComponent<Image>();
         inventorySlotUI = GetComponentInParent<InventorySlotUI>();
+        _tooltipUI = FindObjectOfType<TooltipUI>(true);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (_tooltipUI.dragging)
+            return;
+
+        if (modifier == null)
+            modifier = inventorySlotUI.SlottedModifier;
+
+        _tooltipUI.Show(modifier);
+        _tooltipUI.gameObject.SetActive(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        _tooltipUI.gameObject.SetActive(false);
     }
 }

@@ -43,13 +43,13 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    public void UpdateSlot(Modifier modifier, InventorySlotUI slotUI)
-    {
-        if (_modifiersAdded.Contains(modifier))
-        {
-            _modSlotPair[modifier].RemoveMod();
-            _modSlotPair.Remove(modifier);
-            _modSlotPair.Add(modifier, slotUI);
-        }
-    }
+    //public void UpdateSlot(Modifier modifier, InventorySlotUI slotUI)
+    //{
+    //    if (_modifiersAdded.Contains(modifier))
+    //    {
+    //        _modSlotPair[modifier].RemoveMod();
+    //        _modSlotPair.Remove(modifier);
+    //        _modSlotPair.Add(modifier, slotUI);
+    //    }
+    //}
 }
