@@ -11,12 +11,14 @@ public class PlayerSpellCast : MonoBehaviour
 
     [SerializeField] private Spell[] spells = new Spell[4];
     [SerializeField] private float _manaOverTime = 1;
+    public static AudioSource _audioSource;
 
     private float[] spellCooldowns = new float[4];
 
     // Start is called before the first frame update
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _characterStats = GetComponent<CharacterStats>();
         _hotbarUI = FindObjectOfType<HotbarUI>();
         _spellPanelUI = FindObjectOfType<SpellPanelUI>(true);

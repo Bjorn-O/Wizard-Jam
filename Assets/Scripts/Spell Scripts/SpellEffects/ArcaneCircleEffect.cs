@@ -38,6 +38,7 @@ public class ArcaneCircleEffect : SpellEffect
         for (int i = 0; i < timesToExplode; i++)
         {
             yield return new WaitForSeconds(explosionDelay);
+            PlayerSpellCast._audioSource.PlayOneShot(spellEffectSound);
             var explosion = Instantiate(explosionEffect, transform.position, quaternion.identity);
             Destroy(explosion, 1);
             foreach (CharacterStats body in _bodiesInCircle)

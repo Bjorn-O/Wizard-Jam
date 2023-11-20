@@ -14774,6 +14774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  spellEffectSound: {fileID: 8300000, guid: eb507bbe9c099924cb4f4a4e6074f9d6, type: 3}
   hitEffects: []
   finishedEvent:
     m_PersistentCalls:
