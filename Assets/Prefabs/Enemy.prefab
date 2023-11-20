@@ -335,6 +335,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
   OnDeath:
     m_PersistentCalls:
       m_Calls:
@@ -373,6 +376,7 @@ MonoBehaviour:
   _blinkIntesity: 10
   _fadeDelay: 5
   _fadeDuration: 3
+  _dropChance: 30
   _colToDisable: {fileID: 2591888152449188889}
   _ragdollParent: {fileID: 5785224784059009523}
   _transformsToFollowRagdollBones:

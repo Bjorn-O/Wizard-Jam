@@ -72,6 +72,7 @@ public class DraggableMod : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             cardUI = null;
         }
 
+        transform.SetParent(parentBeforeDrag, false);
         transform.localPosition = Vector2.zero;
     }
 

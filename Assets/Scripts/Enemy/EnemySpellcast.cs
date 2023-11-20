@@ -10,6 +10,7 @@ public class EnemySpellcast : MonoBehaviour
     [SerializeField] private float _distanceToCast = 2.5f;
     [SerializeField] private bool _distanceToCastSameAsStop = true;
     [SerializeField] private float _delaySpellcastTime = 1f;
+    [SerializeField] private Transform _playerPointer;
 
     private float[] spellCooldowns = new float[4];
     private float _delayTimer = 0;
@@ -67,6 +68,9 @@ public class EnemySpellcast : MonoBehaviour
         }
 
         CheckToSpellcast();
+
+        if (_playerPointer != null)
+            _playerPointer.LookAt(_enemyRefs.player);
     }
 
     private void CheckToSpellcast()

@@ -75,13 +75,9 @@ public class SpellVfxManager : MonoBehaviour
                 ElementalEffect elementalEffect;
 
                 if (elementEffectPsPairs.TryGetValue(particleSystem, out elementalEffect))
-                {
                     main.startColor = Color.Lerp(finalColor, main.startColor.color, elementalEffect.originalColorPercentage);
-                }
                 else
-                {
                     main.startColor = finalColor;
-                }
             }
             else
             {

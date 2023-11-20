@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class PlayerSpellCast : MonoBehaviour
 {
-    private HotbarUI hotbarUI;
-    private SpellPanelUI spellPanelUI;
-    private CharacterStats playerStats;
+    private HotbarUI _hotbarUI;
+    private SpellPanelUI _spellPanelUI;
+    private CharacterStats _characterStats;
+    private PlayerStatsUI _playerStatsUI;
 
     [SerializeField] private Spell[] spells = new Spell[4];
+    [SerializeField] private float _manaOverTime = 1;
 
     private float[] spellCooldowns = new float[4];
 
     // Start is called before the first frame update
     void Start()
     {
-        playerStats = GetComponent<CharacterStats>();
-        hotbarUI = FindObjectOfType<HotbarUI>();
-        spellPanelUI = FindObjectOfType<SpellPanelUI>(true);
+        _characterStats = GetComponent<CharacterStats>();
+        _hotbarUI = FindObjectOfType<HotbarUI>();
+        _spellPanelUI = FindObjectOfType<SpellPanelUI>(true);
+        _playerStatsUI = FindObjectOfType<PlayerStatsUI>();
 
         for (int i = 0; i < spells.Length; i++)
         {
@@ -26,32 +29,22 @@ public class PlayerSpellCast : MonoBehaviour
             if (spell == null || spell.SpellIcon == null)
                 continue;
 
-            hotbarUI.UpdateIcon(i, spell.SpellIcon);
-            spellPanelUI.UpdateSpellStats(spell);
+            _hotbarUI.UpdateIcon(i, spell.SpellIcon);
+            _spellPanelUI.UpdateSpellStats(spell);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Placeholder
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            foreach (var spell in spells)
-            {
-                if (spell == null)
-                    continue;
-
-                foreach (var mod in spell.Modifiers)
-                {
-                    mod.SetSpell(spell);
-                }
-            }
-
-            print("Apllied mods!");
-        }
-
         UpdateCooldowns();
+        AddManaOverTime();
+    }
+
+    private void AddManaOverTime()
+    {
+        _characterStats.Mana += _manaOverTime * Time.deltaTime;
+        _playerStatsUI.UpdateMana(_characterStats.Mana, _characterStats.MaxMana);
     }
 
     private void UpdateCooldowns()
@@ -63,13 +56,13 @@ public class PlayerSpellCast : MonoBehaviour
 
             if (spells[i].cooldown == Mathf.Infinity)
             {
-                hotbarUI.UpdateCooldown(i, 1, 1);
+                _hotbarUI.UpdateCooldown(i, 1, 1);
                 continue;
             }
 
             spellCooldowns[i] -= Time.deltaTime;
 
-            hotbarUI.UpdateCooldown(i, spellCooldowns[i], spells[i].cooldown);
+            _hotbarUI.UpdateCooldown(i, spellCooldowns[i], spells[i].cooldown);
         }
     }
 
@@ -80,9 +73,10 @@ public class PlayerSpellCast : MonoBehaviour
 
         Spell spell = spells[index];
 
-        if (spell.manaCost > playerStats.Mana || spellCooldowns[index] > 0)
+        if (spell.manaCost > _characterStats.Mana || spellCooldowns[index] > 0)
             return;
 
+        _characterStats.Mana -= spell.manaCost;
         spellCooldowns[index] = spell.cooldown;
         StartCoroutine(spell.CastSpell());
     }

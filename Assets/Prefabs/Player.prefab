@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 25
   baseManaCost: 5
-  baseCoolDown: 0.75
+  baseCoolDown: 1
   baseEffectScale: 1
   baseEffectAmount: 1
   baseCastAmount: 1
@@ -76,117 +76,6 @@ MonoBehaviour:
   _slashTime: 0.5
   _extraOffset: {x: 0, y: 0.15, z: 0.2}
   _miniDelayBetweenSlashes: 0.2
---- !u!1 &3283182812481347191
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4642890345769436148}
-  - component: {fileID: 3619600747086408293}
-  m_Layer: 0
-  m_Name: MagicBolt
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4642890345769436148
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3283182812481347191}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3877707879868369560}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3619600747086408293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3283182812481347191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ad2b049b8fcce24e9d0e3637f602dfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseDamage: 5
-  baseManaCost: 0
-  baseCoolDown: 1.5
-  baseEffectScale: 1
-  baseEffectAmount: 1
-  baseCastAmount: 1
-  damage: 1
-  manaCost: 0
-  cooldown: 0
-  effectScale: 1
-  effectAmount: 1
-  castAmount: 1
-  multiCastDelay: 0.5
-  modifiers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  spellName: Magic bolt
-  spellIcon: {fileID: 21300000, guid: 44835648c4a395b4eb14f71363c65e16, type: 3}
-  spellEffect: {fileID: 7777109839663737911, guid: 1e6398d05ff48d142816dbb4aa16136d,
-    type: 3}
-  poolSize: 4
-  poolParent: {fileID: 0}
-  onSpellCast:
-    m_PersistentCalls:
-      m_Calls: []
-  onSpellCancelled:
-    m_PersistentCalls:
-      m_Calls: []
-  OnApplyModifiers:
-    m_PersistentCalls:
-      m_Calls: []
-  castTransform: {fileID: 0}
-  camTransform: {fileID: 0}
-  curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: -1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0
-      value: 0.5
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &3936974963567314675
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +396,34 @@ MonoBehaviour:
   maxMana: 100
   OnHit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 276712273614955672}
+        m_TargetAssemblyTypeName: PlayerDamage, Assembly-CSharp
+        m_MethodName: OnDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 276712273614955672}
+        m_TargetAssemblyTypeName: PlayerDamage, Assembly-CSharp
+        m_MethodName: OnHeal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -553,6 +469,7 @@ MonoBehaviour:
   - {fileID: 7307198385060894070}
   - {fileID: 6642816262075025260}
   - {fileID: 0}
+  _manaOverTime: 1
 --- !u!114 &565879354148202207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,8 +642,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 10
-  baseManaCost: 0
-  baseCoolDown: 1
+  baseManaCost: 5
+  baseCoolDown: 0.75
   baseEffectScale: 1
   baseEffectAmount: 1
   baseCastAmount: 1
@@ -759,3 +676,89 @@ MonoBehaviour:
   _fovTweenTime: 0.25
   _effectOffsetZ: 8.5
   _effectExtraOffsetZ: 2
+--- !u!1001 &7658281202699058368
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3877707879868369560}
+    m_Modifications:
+    - target: {fileID: 3038084794442334004, guid: ec04ef1f5354be84a854d287d6713703,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038084794442334004, guid: ec04ef1f5354be84a854d287d6713703,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038084794442334004, guid: ec04ef1f5354be84a854d287d6713703,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038084794442334004, guid: ec04ef1f5354be84a854d287d6713703,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038084794442334004, guid: ec04ef1f5354be84a854d287d6713703,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038084794442334004, guid: ec04ef1f5354be84a854d287d6713703,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038084794442334004, guid: ec04ef1f5354be84a854d287d6713703,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038084794442334004, guid: ec04ef1f5354be84a854d287d6713703,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038084794442334004, guid: ec04ef1f5354be84a854d287d6713703,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038084794442334004, guid: ec04ef1f5354be84a854d287d6713703,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176777213876626103, guid: ec04ef1f5354be84a854d287d6713703,
+        type: 3}
+      propertyPath: m_Name
+      value: MagicBolt
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ec04ef1f5354be84a854d287d6713703, type: 3}
+--- !u!114 &3619600747086408293 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6376192852929500837, guid: ec04ef1f5354be84a854d287d6713703,
+    type: 3}
+  m_PrefabInstance: {fileID: 7658281202699058368}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ad2b049b8fcce24e9d0e3637f602dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &4642890345769436148 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3038084794442334004, guid: ec04ef1f5354be84a854d287d6713703,
+    type: 3}
+  m_PrefabInstance: {fileID: 7658281202699058368}
+  m_PrefabAsset: {fileID: 0}

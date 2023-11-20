@@ -6,6 +6,7 @@ public class MagicBolt : Spell
     [SerializeField] private Transform castTransform;
     [SerializeField] private Transform camTransform;
     [SerializeField] private AnimationCurve curve;
+    [SerializeField] private Animator _anim;
 
     private bool _modifyParticles;
 
@@ -18,7 +19,7 @@ public class MagicBolt : Spell
     {
         base.AddModifier(mod);
 
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     public override IEnumerator CastSpell()
@@ -33,6 +34,9 @@ public class MagicBolt : Spell
 
     protected override void FireSpellEffect(SpellEffect effect, float amount)
     {
+        if(_anim != null)
+            _anim.SetTrigger("Shoot");
+
         if (amount == 1)
         {
             var bolt = Instantiate(effect, castTransform.position, castTransform.rotation);
@@ -54,7 +58,6 @@ public class MagicBolt : Spell
                 bolt.transform.position = castTransform.position;
                 bolt.transform.rotation = camTransform.rotation;
                 bolt.transform.Rotate(0, degrees, 0);
-                print(degrees);
 
                 //Apply Spell stats to object
                 bolt.transform.localScale *= effectScale;

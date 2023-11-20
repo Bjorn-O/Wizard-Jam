@@ -9,6 +9,7 @@ public class EnemyDamage : MonoBehaviour
     private Animator _anim;
     private Renderer renderer;
     private EnemyReferences _enemyReferences;
+    private DroppedLootManager _droppedLootManager;
 
     private Material[] opaqueMats;
     [SerializeField] private Material[] transparentMats;
@@ -23,6 +24,7 @@ public class EnemyDamage : MonoBehaviour
     [Header("Death")]
     [SerializeField] private float _fadeDelay = 1;
     [SerializeField] private float _fadeDuration = 3;
+    [SerializeField] private float _dropChance = 25;
     [SerializeField] private Collider _colToDisable;
     [SerializeField] private Transform _ragdollParent;
     [SerializeField] private TansformFollowRagdollBone[] _transformsToFollowRagdollBones;
@@ -35,6 +37,7 @@ public class EnemyDamage : MonoBehaviour
 
     private void Awake()
     {
+        _droppedLootManager = FindObjectOfType<DroppedLootManager>();
         _enemyReferences = GetComponent<EnemyReferences>();
         _anim = GetComponentInChildren<Animator>();
         renderer = GetComponentInChildren<Renderer>();
@@ -146,6 +149,8 @@ public class EnemyDamage : MonoBehaviour
 
     public void Die(Vector3 force)
     {
+        _droppedLootManager.CheckDropLoot(transform.position);
+
         _enemyReferences.navMeshAgent.enabled = false;
 
         if (renderer is SkinnedMeshRenderer)

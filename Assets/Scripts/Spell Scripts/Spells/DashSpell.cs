@@ -66,20 +66,17 @@ public class DashSpell : Spell
 
         _playerMov.UseGravity = false;
 
-        if (modifiers.Count > 0)
+        float offsetZ = _effectOffsetZ;
+
+        for (int i = 0; i < effectAmount; i++)
         {
-            float offsetZ = _effectOffsetZ;
+            SpellEffect effect = spellEffectPool.Get();
+            effect.damage = damage;
+            effect.transform.localScale = Vector3.one * effectScale;
+            effect.transform.localPosition = new Vector3(0, 0, offsetZ);
+            offsetZ += _effectExtraOffsetZ;
 
-            for (int i = 0; i < effectAmount; i++)
-            {
-                SpellEffect effect = spellEffectPool.Get();
-                effect.damage = damage;
-                effect.transform.localScale = Vector3.one * effectScale;
-                effect.transform.localPosition = new Vector3(0, 0, offsetZ);
-                offsetZ += _effectExtraOffsetZ;
-
-                pooledSpellEffects.Add(effect);
-            }
+            pooledSpellEffects.Add(effect);
         }
 
         if (_modifyParticles)
@@ -88,7 +85,7 @@ public class DashSpell : Spell
             _modifyParticles = false;
         }
 
-        _speedLines.PlayEffect(modifiers.Count > 0);
+        _speedLines.PlayEffect(true);
         _speedLines.transform.position = _cam.transform.position + dir * _speedLinesOffsetZ;
         _speedLines.transform.LookAt(_speedLines.transform.position - (_cam.transform.position - _speedLines.transform.position));
         _cam.DOFieldOfView(_startingCamFov + _dashFovAdder, _fovTweenTime);
@@ -154,6 +151,7 @@ public class DashSpell : Spell
             }
             else
             {
+                _characterStats.Mana -= manaCost;
                 StartCoroutine(CastSpell());
                 _extraCasts -= 1;
             }

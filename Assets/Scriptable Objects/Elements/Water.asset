@@ -23,9 +23,6 @@ MonoBehaviour:
   - operation: 2
     targetStat: 2
     value: 1.1
-  - operation: 0
-    targetStat: 1
-    value: 0.1
   - operation: 2
     targetStat: 1
     value: 1.1

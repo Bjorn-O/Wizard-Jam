@@ -19,6 +19,11 @@ public class SlashSpell : Spell
 
         for (int i = 0; i < castAmount; i++)
         {
+            if (i != 0)
+            {
+                _characterStats.Mana -= manaCost;
+            }
+
             Vector3 offset = Vector3.zero;
             List<SpellEffect> usedSpellEffects = new List<SpellEffect>();
 

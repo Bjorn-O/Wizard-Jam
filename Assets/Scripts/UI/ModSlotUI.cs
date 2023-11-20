@@ -22,7 +22,6 @@ public class ModSlotUI : MonoBehaviour, IDropHandler
        
         dragMod.inInventory = false;
         dragMod.GetComponent<RectTransform>().sizeDelta = Vector2.one * _size;
-        dragMod.transform.SetParent(_modParent, false);
         dragMod.parentBeforeDrag = _modParent;
         modifier = dragMod.modifier;
         cardUI.UpdateStatsByMod(modifier, true);

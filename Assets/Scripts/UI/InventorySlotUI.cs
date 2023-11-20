@@ -74,7 +74,6 @@ public class InventorySlotUI : MonoBehaviour, IDropHandler
 
     public void Drop(DraggableMod dragMod)
     {
-        dragMod.transform.SetParent(_modParent, false);
         dragMod.parentBeforeDrag = _modParent;
         dragMod.GetComponent<RectTransform>().sizeDelta = Vector2.one * _size;
         dragMod.inInventory = true;

@@ -20,13 +20,10 @@ MonoBehaviour:
   - operation: 2
     targetStat: 0
     value: 1.2
-  - operation: 0
-    targetStat: 1
-    value: 0.1
   - operation: 2
     targetStat: 1
     value: 1.3
-  - operation: 2
+  - operation: 0
     targetStat: 3
     value: 0.1
   onHitEffects: []

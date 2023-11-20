@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5176777213876626103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3038084794442334004}
+  - component: {fileID: 6376192852929500837}
+  m_Layer: 0
+  m_Name: MagicBolt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3038084794442334004
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176777213876626103}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6376192852929500837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176777213876626103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ad2b049b8fcce24e9d0e3637f602dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 15
+  baseManaCost: 3
+  baseCoolDown: 0.75
+  baseEffectScale: 1
+  baseEffectAmount: 1
+  baseCastAmount: 1
+  damage: 1
+  manaCost: 0
+  cooldown: 0
+  effectScale: 1
+  effectAmount: 1
+  castAmount: 1
+  multiCastDelay: 0.5
+  modifiers: []
+  spellName: Magic bolt
+  spellIcon: {fileID: 21300000, guid: 44835648c4a395b4eb14f71363c65e16, type: 3}
+  spellEffect: {fileID: 7777109839663737911, guid: 1e6398d05ff48d142816dbb4aa16136d,
+    type: 3}
+  poolSize: 4
+  poolParent: {fileID: 0}
+  onSpellCast:
+    m_PersistentCalls:
+      m_Calls: []
+  onSpellCancelled:
+    m_PersistentCalls:
+      m_Calls: []
+  OnApplyModifiers:
+    m_PersistentCalls:
+      m_Calls: []
+  castTransform: {fileID: 0}
+  camTransform: {fileID: 0}
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
