@@ -33,9 +33,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform[] _spawnBoxes;
     [SerializeField] private float _spawnY = 1;
     [SerializeField] private int _maxEnemies = 30;
-    [SerializeField] private GameObject finishCircle;
+    [SerializeField] public GameObject finishCircle;
 
-    private int _enemiesKilled = 0;
+    public int _enemiesKilled = 0;
 
     // Start is called before the first frame update
     void Awake()
@@ -44,19 +44,31 @@ public class EnemySpawner : MonoBehaviour
         enemyManager = FindObjectOfType<EnemyManager>();
     }
 
-    private void Update()
+    private void Start()
     {
-        //PLACEHOLDER
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SpawnEnemies();
-        }
+        StartSpawnEnemies();
     }
 
-    public void SpawnEnemies()
+    public void StartSpawnEnemies()
+    {
+        StartCoroutine(SpawnEnemies());
+    }
+
+    //private void Update()
+    //{
+    //    //PLACEHOLDER
+    //    if (Input.GetKeyDown(KeyCode.R))
+    //    {
+    //        SpawnEnemies();
+    //    }
+    //}
+
+    public IEnumerator SpawnEnemies()
     {
         if (_enemiesKilled > 0)
-            return;
+            yield break;
+
+        yield return new WaitForSeconds(2);
 
         int countToSpawn = Random.Range(_spawnCount, _spawnCount + _randomExtraSpawn);
         countToSpawn += _extraSpawnDifficulty * (int)_difficulty;
@@ -87,6 +99,8 @@ public class EnemySpawner : MonoBehaviour
             //}
 
             PlaceEnemy(enemy);
+
+            yield return new WaitForSeconds(0.5f);
         }
     }
 

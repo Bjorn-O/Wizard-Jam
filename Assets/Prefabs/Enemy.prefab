@@ -372,9 +372,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transparentMats:
   - {fileID: 2100000, guid: 4b401b5e0c155e649ab7852dc37cdfaa, type: 2}
-  - {fileID: 2100000, guid: fcc5bfd790d74ba49a2c147763001963, type: 2}
-  - {fileID: 2100000, guid: b39f6f8f1e6e65e48b55ec6f2fcf6535, type: 2}
-  - {fileID: 2100000, guid: 7ef62517b0e9b6e4783a6ea807c00736, type: 2}
   showHitEffect: 0
   _blinkTimer: 0
   _blinkDuration: 0.1

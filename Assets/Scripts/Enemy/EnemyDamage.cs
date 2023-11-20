@@ -47,7 +47,7 @@ public class EnemyDamage : MonoBehaviour
         renderer = GetComponentInChildren<Renderer>();
         ragdollBodies = _ragdollParent.GetComponentsInChildren<Rigidbody>();
 
-        opaqueMats = renderer.materials;
+        opaqueMats = renderer.sharedMaterials;
 
         _startingColor = renderer.material.color;
 

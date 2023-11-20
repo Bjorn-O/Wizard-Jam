@@ -887,17 +887,6 @@
                     "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e8f41d44-f825-4385-bc09-543b2fa1cb6a",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Inventory",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }

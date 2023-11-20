@@ -8,7 +8,8 @@ public class Chest : MonoBehaviour
 
     [SerializeField] private LootManager _lootManager;
     [SerializeField] private Vector2 _minMaxModifiers = new Vector2(1, 2);
-    private bool opened = false;
+    [SerializeField] private GameObject openText;
+    public bool opened = false;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,11 @@ public class Chest : MonoBehaviour
         _lootManager.GetPlayerInventory.OnInteraction.RemoveAllListeners();
     }
 
+    public void CloseChest()
+    {
+        _anim.SetTrigger("Close");
+    }
+
     public void OnTriggerEnter(Collider other)
     {
         if (opened)
@@ -42,6 +48,7 @@ public class Chest : MonoBehaviour
 
         if (other.attachedRigidbody != null && other.attachedRigidbody.CompareTag("Player"))
         {
+            openText.SetActive(true);
             _lootManager.GetPlayerInventory.OnInteraction.RemoveAllListeners();
             _lootManager.GetPlayerInventory.OnInteraction.AddListener(OpenChest);
         }
@@ -54,6 +61,7 @@ public class Chest : MonoBehaviour
 
         if (other.attachedRigidbody != null && other.attachedRigidbody.CompareTag("Player"))
         {
+            openText.SetActive(false);
             _lootManager.GetPlayerInventory.OnInteraction.RemoveAllListeners();
         }
     }
