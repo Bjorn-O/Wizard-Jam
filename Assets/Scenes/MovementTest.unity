@@ -4489,6 +4489,11 @@ PrefabInstance:
       objectReference: {fileID: 1499283887}
     - target: {fileID: 3619600747086408293, guid: 987b88c9477d04a44b14acbe7506f549,
         type: 3}
+      propertyPath: spellCastSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 49dc20bf6ee08cb41a463183fb8f28b3, type: 3}
+    - target: {fileID: 3619600747086408293, guid: 987b88c9477d04a44b14acbe7506f549,
+        type: 3}
       propertyPath: modifiers.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: a57b12865c23f7c4d8c5b4fb93b358d8,
@@ -4656,7 +4661,7 @@ PrefabInstance:
     - target: {fileID: 8770058388091489684, guid: 987b88c9477d04a44b14acbe7506f549,
         type: 3}
       propertyPath: m_DefaultActionMap
-      value: 7c6f2a1c-31ac-4c5c-9f44-34238690c1e4
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

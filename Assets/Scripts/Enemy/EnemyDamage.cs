@@ -33,6 +33,10 @@ public class EnemyDamage : MonoBehaviour
     private Dictionary<Transform, ResetRagdollTransform> _oldTransformBeforeRagdoll = new Dictionary<Transform, ResetRagdollTransform>();
     private bool _ragdolling = false;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] audioClip;
+
     public UnityEvent FadedOut;
 
     private void Awake()
@@ -133,7 +137,8 @@ public class EnemyDamage : MonoBehaviour
     {
         if (!showHitEffect)
             return;
-
+        audioSource.clip = audioClip[Random.Range(0, 3)];
+        audioSource.Play();
         _blinkTimer -= Time.deltaTime;
         float lerp = Mathf.Clamp01(_blinkTimer / _blinkDuration);
         float intensity = (lerp * _blinkIntesity) + 1;
@@ -150,6 +155,8 @@ public class EnemyDamage : MonoBehaviour
     {
         _droppedLootManager.CheckDropLoot(transform.position);
         GameManager.instance.killCount++;
+        audioSource.clip = audioClip[Random.Range(0, 3)];
+        audioSource.Play();
 
         _enemyReferences.navMeshAgent.enabled = false;
 

@@ -70,6 +70,7 @@ public class DashSpell : Spell
 
         for (int i = 0; i < effectAmount; i++)
         {
+            PlayerSpellCast._audioSource.PlayOneShot(spellCastSound);
             SpellEffect effect = spellEffectPool.Get();
             effect.damage = damage;
             effect.transform.localScale = Vector3.one * effectScale;

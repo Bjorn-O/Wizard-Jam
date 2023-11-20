@@ -36,6 +36,7 @@ public class ArcaneCircle : Spell
     protected void FireSpellEffect(SpellEffect effect, int amount, Vector3 location, Vector3 rot)
     {
         SpellEffect spellEff = spellEffectPool.Get();
+        PlayerSpellCast._audioSource.PlayOneShot(spellCastSound);
         ArcaneCircleEffect circleEffect = (spellEff as ArcaneCircleEffect);
 
         if (_modifyParticles)

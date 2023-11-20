@@ -31,11 +31,20 @@ public class MagicBolt : Spell
 
     protected override void FireSpellEffect(SpellEffect effect, float amount)
     {
+        PlayerSpellCast._audioSource.PlayOneShot(spellCastSound);
+
         if (amount == 1)
         {
             SpellEffect bolt = spellEffectPool.Get();
             bolt.transform.position =  castTransform.position;
             bolt.transform.rotation =  camTransform.rotation;
+            bolt.transform.localScale *= effectScale;
+            bolt.damage = damage;
+            if (!(bolt as Bolt).addedEventListener)
+            {
+                (bolt as Bolt).OnHitEvent.AddListener(() => { spellEffectPool.Release(bolt); PlayerSpellCast._audioSource.PlayOneShot(bolt.spellEffectSound); });
+                (bolt as Bolt).addedEventListener = true;
+            }
         } else
         {
             float shotPosition = 0 - Mathf.Floor(amount / 2);
@@ -51,6 +60,7 @@ public class MagicBolt : Spell
                 
                 // Grabs the Effect from the ObjectPool
                 SpellEffect bolt = spellEffectPool.Get();
+
 
                 //Checks if the bolt needs to be changed element. This is stupid and dumb but we hadn't prepared for this in the framework. Too bad Bas.
                 if (_modifyParticles)
@@ -69,7 +79,7 @@ public class MagicBolt : Spell
                 bolt.damage = damage;
                 if (!(bolt as Bolt).addedEventListener)
                 {
-                    (bolt as Bolt).OnHitEvent.AddListener(() => { spellEffectPool.Release(bolt); });
+                    (bolt as Bolt).OnHitEvent.AddListener(() => { spellEffectPool.Release(bolt); PlayerSpellCast._audioSource.PlayOneShot(bolt.spellEffectSound); });
                     (bolt as Bolt).addedEventListener = true;
                 }
 
@@ -78,22 +88,4 @@ public class MagicBolt : Spell
             }
         }
     }
-
-    //Decrapit
-
-    //private Vector3 CalculateShotPoint(float radial)
-    //{
-    //    Vector3 originPoint = new Vector3(castPoint.position.x - castPoint.localPosition.x,
-    //        castPoint.position.y,
-    //        castPoint.position.z - castPoint.localPosition.z);
-    //    Vector3 castDir = castPoint.position - originPoint;
-    //    Vector3 rotatedDirection = castDir * radial;
-    //    return castPoint.position + rotatedDirection;
-    //}
-    //private Vector3 GetPlayerPoint()
-    //{
-    //    return new Vector3(castPoint.position.x - castPoint.localPosition.x,
-    //        castPoint.position.y,
-    //        castPoint.position.z - castPoint.localPosition.z);
-    //}
 }

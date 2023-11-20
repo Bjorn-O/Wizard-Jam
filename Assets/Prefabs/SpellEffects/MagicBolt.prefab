@@ -4930,11 +4930,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  spellEffectSound: {fileID: 8300000, guid: a1b79b3e8e81bf0498251617bd1c3dd2, type: 3}
   hitEffects: []
   forcePoint: {fileID: 7767330252685244800}
   forceMultiplier: 10
   speed: 45
   checkLayer: Enemy
+  groundLayer: Ground
   hitEffect: {fileID: 1767617992970784069, guid: 5f7c539d8b7e1b74381c6e24eacc4b4c,
     type: 3}
   effectTimer: 1

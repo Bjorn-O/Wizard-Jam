@@ -29,6 +29,7 @@ public class SlashSpell : Spell
 
             for (int j = 0; j < effectAmount; j++)
             {
+                PlayerSpellCast._audioSource.PlayOneShot(spellCastSound);
                 SpellEffect spellEffect = spellEffectPool.Get();
                 spellEffect.damage = damage;
                 spellEffect.transform.localPosition = offset;
