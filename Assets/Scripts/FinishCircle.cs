@@ -26,8 +26,8 @@ public class FinishCircle : MonoBehaviour
 
     public void ReloadScene()
     {
-        chest1.opened = true;
-        chest2.opened = true;
+        chest1.opened = false;
+        chest2.opened = false;
         chest1.CloseChest();
         chest2.CloseChest();
 
@@ -37,5 +37,7 @@ public class FinishCircle : MonoBehaviour
         FindObjectOfType<EnemySpawner>()._enemiesKilled = 0;
         FindObjectOfType<EnemySpawner>().finishCircle.SetActive(false);
         FindObjectOfType<EnemySpawner>().StartSpawnEnemies();
+
+        _entered = false;
     }
 }
