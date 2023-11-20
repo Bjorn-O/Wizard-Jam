@@ -75,6 +75,11 @@ public class SlashSpell : Spell
         throw new System.NotImplementedException();
     }
 
+    protected override void FireSpellEffect(SpellEffect effect, float amount)
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void Start()
     {
         _characterStats = GetComponentInParent<CharacterStats>();

@@ -6,7 +6,8 @@ TagManager:
   tags:
   - Enemy
   - FxTemporaire
-  - Canvas
+  - SpawnPoint
+  - Rooms
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Ground
   - Enemy
   - Dashing
-  - Ragdoll
-  - Spell effect
+  - 
+  - 
   - 
   - 
   - 
