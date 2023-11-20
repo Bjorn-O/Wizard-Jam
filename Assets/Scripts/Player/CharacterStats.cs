@@ -64,6 +64,12 @@ public class CharacterStats : MonoBehaviour
         maxMana = givenMana;
     }
 
+    public void Heal(float hp)
+    {
+        health += hp;
+        OnHeal?.Invoke();
+    }
+
     public void TakeDamage(float damage, OnHitEffect[] hitEffects, Vector3 force)
     {
         if (health <= 0)

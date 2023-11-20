@@ -12,12 +12,13 @@ public class ArcaneCircleEffect : SpellEffect
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] private Transform forcePoint;
     [SerializeField] private float forceMultiplier;
+    [SerializeField] private string _layerName = "Enemy";
 
     private List<CharacterStats> _bodiesInCircle = new List<CharacterStats>();
 
     public override void OnTriggerEnter(Collider other)
     {
-        if (other.attachedRigidbody != null && other.attachedRigidbody.TryGetComponent<CharacterStats>(out CharacterStats result))
+        if (other.attachedRigidbody != null && other.gameObject.layer == LayerMask.NameToLayer(_layerName) && other.attachedRigidbody.TryGetComponent<CharacterStats>(out CharacterStats result))
         {
             print(result.name + ": Added!");
             _bodiesInCircle.Add(result);

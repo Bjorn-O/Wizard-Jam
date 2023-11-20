@@ -14783,6 +14783,7 @@ MonoBehaviour:
     type: 3}
   forcePoint: {fileID: 3234155070661460299}
   forceMultiplier: 5
+  _layerName: Enemy
 --- !u!114 &4035127773021821082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14799,6 +14800,7 @@ MonoBehaviour:
   - {fileID: 6821804675867308918}
   objectEffects: []
   materialsToChange: []
+  _originalColorMaterials: []
   elementalEffects: []
   emmisionRateModMultiplier: 0.75
 --- !u!1 &5344098721262681911

@@ -27,17 +27,19 @@ public class Bolt : SpellEffect
         int targetMask = LayerMask.NameToLayer(checkLayer);
         if (targetMask == -1) return;
 
-        if (other.attachedRigidbody != null && other.gameObject.layer == targetMask)
+        if (other.gameObject.layer == targetMask || other.gameObject.layer == 0 || other.gameObject.layer == 6)
         {
-            CharacterStats enemyStats = other.attachedRigidbody.GetComponent<CharacterStats>();
+            CharacterStats enemyStats = other.attachedRigidbody != null ? other.attachedRigidbody.GetComponent<CharacterStats>() : null;
 
-            enemyStats.TakeDamage(damage, null, forcePoint != null ?
-                (other.transform.position - forcePoint.position).normalized * (damage * forceMultiplier) : Vector3.zero);
+            if(enemyStats != null)
+                enemyStats.TakeDamage(damage, null, forcePoint != null ?
+                    (other.transform.position - forcePoint.position).normalized * (damage * forceMultiplier) : Vector3.zero);
+
+            OnHitEvent.Invoke();
+
+            var hitMark = Instantiate(hitEffect, transform.position, Quaternion.identity);
+
+            Destroy(hitMark, effectTimer);
         }
-
-        var hitMark = Instantiate(hitEffect, transform.position, Quaternion.identity);
-        
-        Destroy(hitMark, effectTimer);
-        OnHitEvent.Invoke();
     }
 }

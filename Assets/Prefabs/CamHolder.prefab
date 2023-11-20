@@ -14736,6 +14736,7 @@ MonoBehaviour:
   - {fileID: 7261726380420477227}
   materialsToChange:
   - {fileID: 2100000, guid: 22ed2c29faf36d4498b33a6f32c91d9f, type: 2}
+  _originalColorMaterials: []
   elementalEffects:
   - element: 1
     effect: {fileID: 7305544194457396947}

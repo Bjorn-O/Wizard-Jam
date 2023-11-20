@@ -81,7 +81,7 @@ public class DroppedLoot : MonoBehaviour
 
     public void GiveStat()
     {
-        _characterStats.Health += _healthToGive;
+        _characterStats.Heal(_healthToGive);
         _characterStats.Mana += _manaToGive;
         _rb.isKinematic = false;
         _col.enabled = true;

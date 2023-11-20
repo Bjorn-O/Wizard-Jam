@@ -22,7 +22,10 @@ public class GameManager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(gameObject);
+    }
 
+    private void Start()
+    {
         LevelLoader.instance.OnLoadingLevel += () => { _loading = true; };
         LevelLoader.instance.OnLevelLoaded += () => { _loading = false; };
     }
