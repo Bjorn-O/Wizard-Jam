@@ -87,6 +87,11 @@ public class DashSpell : Spell
         _canCheckDash = true;
     }
 
+    protected override void FireSpellEffect(SpellEffect effect, float amount)
+    {
+        throw new System.NotImplementedException();
+    }
+
     // Start is called before the first frame update
     void Start()
     {

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - FxTemporaire
+  - SpawnPoint
+  - Rooms
   layers:
   - Default
   - TransparentFX
