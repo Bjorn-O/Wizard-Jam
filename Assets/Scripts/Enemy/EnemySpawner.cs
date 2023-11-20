@@ -24,6 +24,10 @@ public class EnemySpawner : MonoBehaviour
     //[SerializeField] private float _loopMultiplier = 0.5f;
     [SerializeField] private float _enemyExtraLoopHealth = 20;
     [SerializeField] private float _enemyExtraDifficultyHealth = 25;
+    [SerializeField] private float _wizardChance = 20;
+    [SerializeField] private float _extraWizardChanceDifficulty = 5;
+    [SerializeField] private float _extraWizardChanceLoop = 2;
+    [SerializeField] private float _maxWizardChance = 40;
 
     [Header("Spawn settings")]
     [SerializeField] private Transform[] _spawnBoxes;
@@ -50,9 +54,23 @@ public class EnemySpawner : MonoBehaviour
         int countToSpawn = Random.Range(_spawnCount, _spawnCount + _randomExtraSpawn);
         countToSpawn += _extraSpawnDifficulty * (int)_difficulty;
 
+        float wizChance = _wizardChance + 
+            (_extraWizardChanceDifficulty * (int)_difficulty) + (_extraWizardChanceLoop * GameManager.instance.loopCount);
+
+        if (wizChance > _maxWizardChance)
+            wizChance = _maxWizardChance;
+
         for (int i = 0; i < countToSpawn; i++)
         {
-            EnemyReferences enemy = enemyManager.GetAvailableEnemy();
+            EnemyReferences enemy;
+
+            float rand = Random.Range(0, 100);
+
+            if (rand < _wizardChance)
+                enemy = enemyManager.GetAvailableWizard();
+            else
+                enemy = enemyManager.GetAvailableGoblin();
+
             _enemies.Add(enemy);
 
             if (!_subbedEnemies.Contains(enemy))

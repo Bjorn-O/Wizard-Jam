@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6346166383466326598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4296949708272503097}
+  - component: {fileID: 2013795573725672005}
+  m_Layer: 0
+  m_Name: DroppedLootManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4296949708272503097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6346166383466326598}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2013795573725672005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6346166383466326598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a455e8840e8c00147a48d7b5a69a93bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _droppedLootPrefab: {fileID: 2377659632666733720, guid: 347dc9bd5115b9041afa6163f564dc37,
+    type: 3}
+  _maxPoolSize: 20
+  _healthToGive: 20
+  _manaToGive: 10
+  _minHealthToGivePercentage: 0.5
+  _healthChance: 40
+  _minHealthLowPercentage: 0.25
+  _healthChanceLow: 70
+  _dropChance: 40
+  _dropChanceLowStats: 70
+  _manaHigherChancePercentage: 0.4

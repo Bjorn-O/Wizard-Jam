@@ -469,7 +469,7 @@ MonoBehaviour:
   - {fileID: 7307198385060894070}
   - {fileID: 6642816262075025260}
   - {fileID: 0}
-  _manaOverTime: 1
+  _manaOverTime: 2
 --- !u!114 &565879354148202207
 MonoBehaviour:
   m_ObjectHideFlags: 0

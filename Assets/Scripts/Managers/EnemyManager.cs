@@ -12,20 +12,22 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private GameObject _bossPrefab;
 
     private IObjectPool<EnemyReferences> _goblinPool;
+    private IObjectPool<EnemyReferences> _wizardPool;
     [SerializeField] private int _poolSize = 10;
     [SerializeField] private Modifier[] _availableMods;
 
     // Start is called before the first frame update
     void Awake()
     {
-        _goblinPool = new ObjectPool<EnemyReferences>(() => CreatePooledItem(_goblinPrefab), OnTakeFromPool, OnReturnedToPool, OnDestroyPoolObject, true, _poolSize);
+        _goblinPool = new ObjectPool<EnemyReferences>(() => CreatePooledItem(_goblinPrefab, _goblinPool), OnTakeFromPool, OnReturnedToPool, OnDestroyPoolObject, true, _poolSize);
+        _wizardPool = new ObjectPool<EnemyReferences>(() => CreatePooledItem(_wizardPrefab, _wizardPool), OnTakeFromPool, OnReturnedToPool, OnDestroyPoolObject, true, _poolSize);
     }
 
-    private EnemyReferences CreatePooledItem(GameObject prefab)
+    private EnemyReferences CreatePooledItem(GameObject prefab, IObjectPool<EnemyReferences> pool)
     {
         GameObject enemy = Instantiate(prefab, transform, false);
         EnemyReferences enemyRefs = enemy.GetComponent<EnemyReferences>();
-        enemy.GetComponent<EnemyDamage>().FadedOut.AddListener(() => _goblinPool.Release(enemyRefs));
+        enemy.GetComponent<EnemyDamage>().FadedOut.AddListener(() => pool.Release(enemyRefs));
 
         return enemyRefs;
     }
@@ -47,15 +49,20 @@ public class EnemyManager : MonoBehaviour
         Destroy(enemy.gameObject);
     }
 
-    public EnemyReferences GetAvailableEnemy()
+    public EnemyReferences GetAvailableGoblin()
     {
         return _goblinPool.Get();
     }
 
-    public void ReturnEnemy(EnemyReferences enemy)
+    public EnemyReferences GetAvailableWizard()
     {
-        _goblinPool.Release(enemy);
+        return _wizardPool.Get();
     }
+
+    //public void ReturnGoblin(EnemyReferences enemy)
+    //{
+    //    _goblinPool.Release(enemy);
+    //}
 
     public Modifier GetRandomAvailableMod()
     {
