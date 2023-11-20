@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Size
   m_EditorClassIdentifier: 
   keyword: Bigger
+  description: Makes the spell's effect bigger
   icon: {fileID: 21300000, guid: 5435b818d4c881f4b86b2c2a3ead530b, type: 3}
   element: 0
   mods:

@@ -23,10 +23,33 @@ public class InventoryUI : MonoBehaviour
         }
         else
         {
-            InventorySlotUI slot = _inventorySlots[_modSlotPair.Count];
-            _modSlotPair.Add(modifier, slot);
-            slot.UpdateSlot(modifier, count);
+            InventorySlotUI selectedSlot = null;
+
+            foreach (var slot in _inventorySlots)
+            {
+                if (slot.SlottedModifier == null)
+                {
+                    selectedSlot = slot;
+                    break;
+                }
+            }
+
+            if (selectedSlot == null)
+                return;
+
+            _modSlotPair.Add(modifier, selectedSlot);
+            selectedSlot.UpdateSlot(modifier, count);
             _modifiersAdded.Add(modifier);
         }
     }
+
+    //public void UpdateSlot(Modifier modifier, InventorySlotUI slotUI)
+    //{
+    //    if (_modifiersAdded.Contains(modifier))
+    //    {
+    //        _modSlotPair[modifier].RemoveMod();
+    //        _modSlotPair.Remove(modifier);
+    //        _modSlotPair.Add(modifier, slotUI);
+    //    }
+    //}
 }

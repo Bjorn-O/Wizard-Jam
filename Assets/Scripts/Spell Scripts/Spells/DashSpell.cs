@@ -7,6 +7,7 @@ public class DashSpell : Spell
 {
     private Rigidbody _rb;
     private PlayerMovement _playerMov;
+    private CharacterStats _characterStats;
     private Collider _playerCol;
     private Camera _cam;
 
@@ -28,6 +29,7 @@ public class DashSpell : Spell
 
     private int _extraCasts = 0;
     private bool _resetCastAmount = true;
+    private bool _modifyParticles;
 
     public override IEnumerator CastSpell()
     {
@@ -64,23 +66,26 @@ public class DashSpell : Spell
 
         _playerMov.UseGravity = false;
 
-        if (modifiers.Count > 0)
+        float offsetZ = _effectOffsetZ;
+
+        for (int i = 0; i < effectAmount; i++)
         {
-            float offsetZ = _effectOffsetZ;
+            SpellEffect effect = spellEffectPool.Get();
+            effect.damage = damage;
+            effect.transform.localScale = Vector3.one * effectScale;
+            effect.transform.localPosition = new Vector3(0, 0, offsetZ);
+            offsetZ += _effectExtraOffsetZ;
 
-            for (int i = 0; i < effectAmount; i++)
-            {
-                SpellEffect effect = spellEffectPool.Get();
-                effect.damage = damage;
-                effect.transform.localScale = Vector3.one * effectScale;
-                effect.transform.localPosition = new Vector3(0, 0, offsetZ);
-                offsetZ += _effectExtraOffsetZ;
-
-                pooledSpellEffects.Add(effect);
-            }
+            pooledSpellEffects.Add(effect);
         }
 
-        _speedLines.PlayEffect(modifiers.Count > 0);
+        if (_modifyParticles)
+        {
+            _speedLines.ModifyParticleSystems(effectAmount, GetElementsFromMods().ToArray());
+            _modifyParticles = false;
+        }
+
+        _speedLines.PlayEffect(true);
         _speedLines.transform.position = _cam.transform.position + dir * _speedLinesOffsetZ;
         _speedLines.transform.LookAt(_speedLines.transform.position - (_cam.transform.position - _speedLines.transform.position));
         _cam.DOFieldOfView(_startingCamFov + _dashFovAdder, _fovTweenTime);
@@ -94,18 +99,24 @@ public class DashSpell : Spell
         _canCheckDash = true;
     }
 
+    protected override void FireSpellEffect(SpellEffect effect, float amount)
+    {
+        throw new System.NotImplementedException();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         _playerMov = FindObjectOfType<PlayerMovement>();
         _rb = _playerMov.GetComponent<Rigidbody>();
+        _characterStats = _rb.GetComponent<CharacterStats>();
         _playerCol = _rb.GetComponentInChildren<Collider>();
 
         _speedLinesOffsetZ = _speedLines.transform.localPosition.z;
         _cam = Camera.main;
         _startingCamFov = _cam.fieldOfView;
 
-        OnApplyModifiers.AddListener(() => _speedLines.ModifyParticleSystems(effectAmount, GetElementsFromMods().ToArray()));
+        OnApplyModifiers.AddListener(() => { _modifyParticles = true; });
     }
 
     private void Update()
@@ -138,13 +149,14 @@ public class DashSpell : Spell
 
             pooledSpellEffects.Clear();
 
-            if (_extraCasts <= 0)
+            if (_extraCasts <= 0 || _characterStats.Mana < manaCost)
             {
                 _resetCastAmount = true;
                 cooldown = startingCooldown;
             }
             else
             {
+                _characterStats.Mana -= manaCost;
                 StartCoroutine(CastSpell());
                 _extraCasts -= 1;
             }

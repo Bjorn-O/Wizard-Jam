@@ -7,6 +7,8 @@ public class Modifier : ScriptableObject
 {
     [SerializeField] private string keyword;
     public string Keyword { get { return keyword; } }
+    [SerializeField] private string description;
+    public string Description { get { return description; } }
     [SerializeField] private Sprite icon;
     public Sprite Icon { get { return icon; } }
     [SerializeField] private Elements element;
@@ -37,11 +39,16 @@ public class Modifier : ScriptableObject
     {
         //if (!targetSpell.HasModifierSlot) return;
 
-        _spell = targetSpell;
-        ApplyMod();
+        SetSpell(targetSpell, false);
     }
 
-    public void ApplyMod()
+    public void SetSpell(Spell targetSpell, bool onApplyImmediately)
+    {
+        _spell = targetSpell;
+        ApplyMod(onApplyImmediately);
+    }
+
+    public void ApplyMod(bool onApplyImmediately)
     {
         foreach (var mod in mods)
         {
@@ -56,16 +63,24 @@ public class Modifier : ScriptableObject
             //targetEffect.OnHitTrigger += component.OnHit; 
         }
 
+        if (onApplyImmediately)
+        {
+            _spell.OnApplyModifiers?.Invoke();
+            return;
+        }
         _spell.CountAppliedModifiers();
     }
     
-    public void RemoveMod()
+    public void RemoveSpell()
     {
-        foreach (var mod in mods)
+        for (int i = mods.Length - 1; i >= 0; i--)
         {
+            Mod mod = mods[i];
             Ref<float> statRef = _spell.GetStatRefByEnum(mod.targetStat);
             statRef.Value = reverseOperatorDictionary[mod.operation](statRef.Value, mod.value);
         }
+
+        _spell.OnApplyModifiers?.Invoke();
     }
 }
 

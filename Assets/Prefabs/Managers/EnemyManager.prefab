@@ -46,7 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _goblinPrefab: {fileID: 549857875660583545, guid: 03478b11052b4154f81abf41a3e393d7,
     type: 3}
-  _wizardPrefab: {fileID: 0}
+  _wizardPrefab: {fileID: 6886554390113368359, guid: e7e461d35b84a0b4fb01c7bfb5970415,
+    type: 3}
   _bossPrefab: {fileID: 0}
   _poolSize: 15
   _availableMods:

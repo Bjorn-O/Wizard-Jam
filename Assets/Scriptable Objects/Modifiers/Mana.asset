@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Mana
   m_EditorClassIdentifier: 
   keyword: Cheaper
+  description: Reduces mana cost
   icon: {fileID: 21300000, guid: de4e84ccf30e3af499d52c00660cd83a, type: 3}
   element: 0
   mods:

@@ -13,15 +13,13 @@ MonoBehaviour:
   m_Name: Fire
   m_EditorClassIdentifier: 
   keyword: Fire
+  description: Adds high damage to spell
   icon: {fileID: 21300000, guid: 4e05de9c5538bb94e9a683884dd77803, type: 3}
   element: 1
   mods:
   - operation: 2
     targetStat: 0
-    value: 1.25
-  - operation: 0
-    targetStat: 1
-    value: 0.1
+    value: 1.3
   - operation: 2
     targetStat: 1
     value: 1.2

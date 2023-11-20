@@ -12,6 +12,7 @@ public class EnemyReferences : MonoBehaviour
     [HideInInspector] public CharacterStats characterStats;
     [HideInInspector] public EnemyDamage enemyDamage;
     [HideInInspector] public EnemySpellcast enemySpellcast;
+    [HideInInspector] public Transform player;
 
     private void Awake()
     {
@@ -19,5 +20,6 @@ public class EnemyReferences : MonoBehaviour
         characterStats = GetComponent<CharacterStats>();
         enemyDamage = GetComponent<EnemyDamage>();
         enemySpellcast = GetComponent<EnemySpellcast>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 }

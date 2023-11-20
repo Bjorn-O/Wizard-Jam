@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3352073699592027555}
   - component: {fileID: 8472271826676950620}
   - component: {fileID: 1443058919187386614}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4905,7 +4905,7 @@ GameObject:
   - component: {fileID: 2560125075388881047}
   - component: {fileID: 875795446651413599}
   - component: {fileID: 1527211975631115874}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9804,7 +9804,7 @@ GameObject:
   - component: {fileID: 6096189731073812048}
   - component: {fileID: 6880455067404641591}
   - component: {fileID: 7895139524323734598}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SlashEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9844,6 +9844,7 @@ MonoBehaviour:
   hitEffects: []
   forceMultiplier: 8
   forcePoint: {fileID: 7566881706285657638}
+  checkLayer: Enemy
 --- !u!114 &6096189731073812048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9860,6 +9861,7 @@ MonoBehaviour:
   - {fileID: 8115732129429794566}
   objectEffects: []
   materialsToChange: []
+  _originalColorMaterials: []
   elementalEffects:
   - element: 3
     effect: {fileID: 8770691656880291276}
@@ -9934,7 +9936,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7566881706285657638}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ForcePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9967,7 +9969,7 @@ GameObject:
   - component: {fileID: 1980090803444699088}
   - component: {fileID: 4527278557825376000}
   - component: {fileID: 5820925226473777441}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Stones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14864,7 +14866,7 @@ GameObject:
   - component: {fileID: 6720265966531412449}
   - component: {fileID: 654514091212907442}
   - component: {fileID: 7444143290922181216}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Orbiting Wind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19753,7 +19755,7 @@ GameObject:
   - component: {fileID: 5815253063743167375}
   - component: {fileID: 7544265337247301755}
   - component: {fileID: 1367391392515880777}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Foam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24471,7 +24473,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3249670078267758422}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Earth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24506,7 +24508,7 @@ GameObject:
   - component: {fileID: 2739398844607596557}
   - component: {fileID: 8146814076154078541}
   - component: {fileID: 1167886784402324284}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StonesHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29461,7 +29463,7 @@ GameObject:
   - component: {fileID: 1527311615064967440}
   - component: {fileID: 8115732129429794566}
   - component: {fileID: 8005806950455795195}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34360,6 +34362,11 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2504214343101900869, guid: 3ed0d324122d7b24eaec75c55c74aafc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2504214343101900870, guid: 3ed0d324122d7b24eaec75c55c74aafc,
         type: 3}
       propertyPath: playOnAwake
@@ -34457,8 +34464,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2504214343621411470, guid: 3ed0d324122d7b24eaec75c55c74aafc,
         type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2504214343621411470, guid: 3ed0d324122d7b24eaec75c55c74aafc,
+        type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6484188613129301618, guid: 3ed0d324122d7b24eaec75c55c74aafc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

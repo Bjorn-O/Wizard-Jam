@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SlashSpell : Spell
 {
+    private CharacterStats _characterStats;
+
     [SerializeField] private float _slashTime = 0.5f;
     [SerializeField] private Vector3 _extraOffset;
     [SerializeField] private float _miniDelayBetweenSlashes = 0.1f;
@@ -17,6 +19,11 @@ public class SlashSpell : Spell
 
         for (int i = 0; i < castAmount; i++)
         {
+            if (i != 0)
+            {
+                _characterStats.Mana -= manaCost;
+            }
+
             Vector3 offset = Vector3.zero;
             List<SpellEffect> usedSpellEffects = new List<SpellEffect>();
 
@@ -55,6 +62,9 @@ public class SlashSpell : Spell
             }
 
             scaleX *= -1;
+
+            if (_characterStats.Mana < manaCost)
+                break;
         }
 
         cooldown = startingCooldown;
@@ -65,8 +75,14 @@ public class SlashSpell : Spell
         throw new System.NotImplementedException();
     }
 
+    protected override void FireSpellEffect(SpellEffect effect, float amount)
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void Start()
     {
+        _characterStats = GetComponentInParent<CharacterStats>();
         OnApplyModifiers.AddListener(() => { _modifyParticles = true; });
     }
 }

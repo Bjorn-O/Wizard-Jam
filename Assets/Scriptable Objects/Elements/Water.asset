@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d566f579dc94247b86580e8c7e5ca0, type: 3}
   m_Name: Water
   m_EditorClassIdentifier: 
-  keyword: Wind
+  keyword: Water
+  description: Adds a bit of damage to spell, with low drawbacks
   icon: {fileID: 21300000, guid: 72d11ebf2ce77d94e86dbb0024c7681b, type: 3}
   element: 2
   mods:

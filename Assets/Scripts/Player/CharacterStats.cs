@@ -12,13 +12,24 @@ public class CharacterStats : MonoBehaviour
     private float startingHealth = 100;
     private float startingMana = 100;
 
-    public float Health { get { return health; } set { health = Mathf.Clamp(value, 0, maxHealth); } }
+    public float Health { get { return health; } set {
+            if (value > health)
+            {
+                OnHeal?.Invoke();
+            }
+
+            health = Mathf.Clamp(value, 0, maxHealth);
+        }
+    }
+    public float MaxHealth { get { return maxHealth; } }
     public float Mana { get { return mana; } set { mana = Mathf.Clamp(value, 0, maxMana); } }
+    public float MaxMana { get { return maxMana; } }
 
     public float StartingHealth { get { return startingHealth; } }
     public float StartingMana { get { return startingMana; } }
 
     public UnityEvent OnHit;
+    public UnityEvent OnHeal;
     public UnityEvent<Vector3> OnDeath;
 
     private bool _startingStatsSet = false;
@@ -59,13 +70,16 @@ public class CharacterStats : MonoBehaviour
             return;
 
         health -= damage;
-        OnHit?.Invoke();
 
         if (health <= 0)
         {
+            health = 0;
+            OnHit?.Invoke();
             OnDeath?.Invoke(force);
             return;
         }
+
+        OnHit?.Invoke();
 
         if (hitEffects != null)
         {

@@ -17,6 +17,7 @@ public class EnemyMovement : MonoBehaviour
     
     [SerializeField] private float updateDelay = 0.2f;
     [SerializeField] private float detectionDelay= 0.2f;
+    [SerializeField] private float lookSpeed = 5f;
     
     [SerializeField]private bool chasePlayer = true;
 
@@ -55,6 +56,12 @@ public class EnemyMovement : MonoBehaviour
         if (targetDistance <= stopDistance)
         {
             CheckLineOfSight();
+
+            var targetRotation = Quaternion.LookRotation(target.position - transform.position);
+
+            // Smoothly rotate towards the target point.
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, lookSpeed * Time.deltaTime);
+
         }
         else
         {
