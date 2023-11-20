@@ -442,9 +442,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5687895040732494941}
-        m_TargetAssemblyTypeName: PlayerSpellCast, Assembly-CSharp
-        m_MethodName: SaveAllModifiers
+      - m_Target: {fileID: 6430066848852348058}
+        m_TargetAssemblyTypeName: PlayerInventory, Assembly-CSharp
+        m_MethodName: SaveInventory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
