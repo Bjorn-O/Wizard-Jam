@@ -684,6 +684,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 559611401177239441}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1673864621 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8576704487006909762, guid: 987b88c9477d04a44b14acbe7506f549,
+    type: 3}
+  m_PrefabInstance: {fileID: 6251047324421517015}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5678cae3c19da84390a01649f49342e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1726218419
 GameObject:
   m_ObjectHideFlags: 0
@@ -2561,6 +2573,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5687895040732494941, guid: 987b88c9477d04a44b14acbe7506f549,
+        type: 3}
+      propertyPath: spells.Array.data[3]
+      value: 
+      objectReference: {fileID: 1673864621}
     - target: {fileID: 6430066848852348058, guid: 987b88c9477d04a44b14acbe7506f549,
         type: 3}
       propertyPath: _testMods.Array.size
@@ -2662,6 +2679,43 @@ PrefabInstance:
       propertyPath: _speedLines
       value: 
       objectReference: {fileID: 1204630309}
+    - target: {fileID: 8576704487006909762, guid: 987b88c9477d04a44b14acbe7506f549,
+        type: 3}
+      propertyPath: poolSize
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8576704487006909762, guid: 987b88c9477d04a44b14acbe7506f549,
+        type: 3}
+      propertyPath: camPosition
+      value: 
+      objectReference: {fileID: 1604253169}
+    - target: {fileID: 8576704487006909762, guid: 987b88c9477d04a44b14acbe7506f549,
+        type: 3}
+      propertyPath: explosionTimer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8576704487006909762, guid: 987b88c9477d04a44b14acbe7506f549,
+        type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 8576704487006909762, guid: 987b88c9477d04a44b14acbe7506f549,
+        type: 3}
+      propertyPath: modifiers.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8576704487006909762, guid: 987b88c9477d04a44b14acbe7506f549,
+        type: 3}
+      propertyPath: modifiers.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 604076794d1a0ed4895a680875eafe00,
+        type: 2}
+    - target: {fileID: 8576704487006909762, guid: 987b88c9477d04a44b14acbe7506f549,
+        type: 3}
+      propertyPath: modifiers.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 83cc9dff7c69cf24baced6544310f238,
+        type: 2}
     - target: {fileID: 8770058388091489684, guid: 987b88c9477d04a44b14acbe7506f549,
         type: 3}
       propertyPath: m_Camera

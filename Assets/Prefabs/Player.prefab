@@ -79,6 +79,83 @@ MonoBehaviour:
   _slashTime: 0.5
   _extraOffset: {x: 0, y: 0.15, z: 0.2}
   _miniDelayBetweenSlashes: 0.2
+--- !u!1 &680205697976737547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6942153270306165575}
+  - component: {fileID: 8576704487006909762}
+  m_Layer: 0
+  m_Name: ArcaneCircle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6942153270306165575
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680205697976737547}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3877707879868369560}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8576704487006909762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680205697976737547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5678cae3c19da84390a01649f49342e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 10
+  baseManaCost: 0
+  baseCoolDown: 5
+  baseEffectScale: 1
+  baseEffectAmount: 1
+  baseCastAmount: 1
+  damage: 0
+  manaCost: 0
+  cooldown: 0
+  effectScale: 0
+  effectAmount: 0
+  castAmount: 0
+  multiCastDelay: 0.5
+  modifiers: []
+  spellName: Arcane Circle
+  spellIcon: {fileID: 21300000, guid: 70f95e5eda757a6418a6beef5aa4da3f, type: 3}
+  spellEffect: {fileID: 1775743112757226997, guid: a9d5232d84beb98429801fb306e059ee,
+    type: 3}
+  poolSize: 6
+  poolParent: {fileID: 0}
+  onSpellCast:
+    m_PersistentCalls:
+      m_Calls: []
+  onSpellCancelled:
+    m_PersistentCalls:
+      m_Calls: []
+  OnApplyModifiers:
+    m_PersistentCalls:
+      m_Calls: []
+  camPosition: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &3283182812481347191
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,8 +232,8 @@ MonoBehaviour:
   OnApplyModifiers:
     m_PersistentCalls:
       m_Calls: []
-  castPoint: {fileID: 5490615935201798294}
-  playerPoint: {fileID: 2411416594357185074}
+  castTransform: {fileID: 0}
+  camTransform: {fileID: 0}
   curve:
     serializedVersion: 2
     m_Curve:
@@ -254,6 +331,7 @@ Transform:
   - {fileID: 4642890345769436148}
   - {fileID: 2000866812105117980}
   - {fileID: 5298171574537157082}
+  - {fileID: 6942153270306165575}
   m_Father: {fileID: 2411416594357185074}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6572514609058084019

@@ -17,8 +17,6 @@ public class MagicBolt : Spell
     public override void AddModifier(Modifier mod)
     {
         base.AddModifier(mod);
-
-        throw new System.NotImplementedException();
     }
 
     public override IEnumerator CastSpell()
@@ -35,7 +33,9 @@ public class MagicBolt : Spell
     {
         if (amount == 1)
         {
-            var bolt = Instantiate(effect, castTransform.position, castTransform.rotation);
+            SpellEffect bolt = spellEffectPool.Get();
+            bolt.transform.position =  castTransform.position;
+            bolt.transform.rotation =  camTransform.rotation;
         } else
         {
             float shotPosition = 0 - Mathf.Floor(amount / 2);
@@ -48,13 +48,21 @@ public class MagicBolt : Spell
                 Vector3 shotDirection = new Vector3(shotPosition / 10, castTransform.transform.localPosition.y, curve.Evaluate(shotPosition / 10));
                 float radial = Mathf.Atan2(shotDirection.x, shotDirection.z);
                 float degrees = radial * (180 / Mathf.PI);
+                
+                // Grabs the Effect from the ObjectPool
+                SpellEffect bolt = spellEffectPool.Get();
+
+                //Checks if the bolt needs to be changed element. This is stupid and dumb but we hadn't prepared for this in the framework. Too bad Bas.
+                if (_modifyParticles)
+                {
+                    SpellVfxManager spellVfx = bolt.GetComponent<SpellVfxManager>();
+                    spellVfx.ModifyParticleSystems(effectAmount, GetElementsFromMods().ToArray());
+                }
 
                 //Spawn Spell and set position/rotation
-                SpellEffect bolt = spellEffectPool.Get();
                 bolt.transform.position = castTransform.position;
                 bolt.transform.rotation = camTransform.rotation;
                 bolt.transform.Rotate(0, degrees, 0);
-                print(degrees);
 
                 //Apply Spell stats to object
                 bolt.transform.localScale *= effectScale;
@@ -63,13 +71,6 @@ public class MagicBolt : Spell
                 {
                     (bolt as Bolt).OnHitEvent.AddListener(() => { spellEffectPool.Release(bolt); });
                     (bolt as Bolt).addedEventListener = true;
-                }
-
-                //Checks if the bolt needs to be changed element. This is stupid and dumb but we hadn't prepared for this in the framework. Too bad Bas.
-                if (_modifyParticles)
-                {
-                    SpellVfxManager spellVfx = bolt.GetComponent<SpellVfxManager>();
-                    spellVfx.ModifyParticleSystems(effectAmount, GetElementsFromMods().ToArray());
                 }
 
                 // Give bolt action to release
