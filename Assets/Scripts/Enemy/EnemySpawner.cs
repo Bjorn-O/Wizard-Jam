@@ -92,11 +92,11 @@ public class EnemySpawner : MonoBehaviour
 
             _enemies.Add(enemy);
 
-            //if (!_subbedEnemies.Contains(enemy))
-            //{
-            //    _subbedEnemies.Add(enemy);
-            //    enemy.characterStats.OnDeath.AddListener(_ => _enemies.Remove(enemy));
-            //}
+            if (!_subbedEnemies.Contains(enemy))
+            {
+                _subbedEnemies.Add(enemy);
+                enemy.characterStats.OnDeath.AddListener(_ => { _enemiesKilled++; CheckOpenDoors(); });
+            }
 
             PlaceEnemy(enemy);
 
@@ -106,7 +106,6 @@ public class EnemySpawner : MonoBehaviour
 
     public void PlaceEnemy(EnemyReferences enemy)
     {
-        enemy.characterStats.OnDeath.AddListener(_ => { _enemiesKilled++; CheckOpenDoors(); });
         enemy.navMeshAgent.enabled = false;
         Transform enemyTransform = enemy.transform;
 
