@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerInventory : MonoBehaviour
@@ -13,6 +14,8 @@ public class PlayerInventory : MonoBehaviour
     private PanelManagerUI panelManagerUI;
     private InventoryUI inventoryUI;
     private PlayerInput input;
+
+    public UnityEvent OnInteraction;
 
     // Start is called before the first frame update
     void Start()
@@ -61,8 +64,19 @@ public class PlayerInventory : MonoBehaviour
     private void OnInventory()
     {
         bool showingPanels = panelManagerUI.ToggleInventoryAndCardPanel();
-        input.SwitchCurrentActionMap(showingPanels ? "UI": "Player");
-        Cursor.visible = showingPanels;
-        Cursor.lockState = showingPanels ? CursorLockMode.None : CursorLockMode.Locked;
+        SwitchControlMap(showingPanels ? "UI" : "Player");
+    }
+
+    public void SwitchControlMap(string mapString)
+    {
+        input.SwitchCurrentActionMap(mapString);
+
+        Cursor.visible = mapString == "UI";
+        Cursor.lockState = mapString == "UI" ? CursorLockMode.None : CursorLockMode.Locked;
+    }
+
+    private void OnInteract()
+    {
+        OnInteraction?.Invoke();
     }
 }

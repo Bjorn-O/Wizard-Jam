@@ -65,7 +65,6 @@ public class EnemyDamage : MonoBehaviour
         ResetAllSettings();
     }
 
-
     public void ResetAllSettings()
     {
         ResetRagdoll();
@@ -150,6 +149,7 @@ public class EnemyDamage : MonoBehaviour
     public void Die(Vector3 force)
     {
         _droppedLootManager.CheckDropLoot(transform.position);
+        GameManager.instance.killCount++;
 
         _enemyReferences.navMeshAgent.enabled = false;
 

@@ -162,9 +162,4 @@ public class DashSpell : Spell
             }
         }
     }
-
-    protected override void FireSpellEffect(SpellEffect effect, float amount)
-    {
-        throw new System.NotImplementedException();
-    }
 }
