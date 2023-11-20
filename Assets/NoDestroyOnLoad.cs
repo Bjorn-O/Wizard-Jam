@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class NoDestroyOnLoad : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static NoDestroyOnLoad instance;
+
+    void Awake()
     {
-        DontDestroyOnLoad(this); 
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
     }
 }
