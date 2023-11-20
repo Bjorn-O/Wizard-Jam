@@ -56,9 +56,6 @@ public class Chest : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (opened)
-            return;
-
         if (other.attachedRigidbody != null && other.attachedRigidbody.CompareTag("Player"))
         {
             openText.SetActive(false);

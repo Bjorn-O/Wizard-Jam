@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7522488926840852784}
   - component: {fileID: 6018035203305846219}
-  - component: {fileID: 3138196318923499964}
+  - component: {fileID: 3613570115780314222}
   m_Layer: 0
   m_Name: The bard in the corner
   m_TagString: Untagged
@@ -129,7 +129,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3138196318923499964
+--- !u!114 &3613570115780314222
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

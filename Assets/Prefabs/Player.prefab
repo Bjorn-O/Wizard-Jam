@@ -514,7 +514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraHolder: {fileID: 0}
   _camera: {fileID: 0}
-  _sensitivity: 80
+  _sensitivity: 40
   _swaySpeed: 5
   _lookSwayMultiplier: 0.26
   _movementSwayStrength: {x: 0.2, y: 1, z: 0.2}

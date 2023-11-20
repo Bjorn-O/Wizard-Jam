@@ -1429,7 +1429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemies: []
-  _difficulty: 1
+  _difficulty: 0
   _spawnCount: 4
   _randomExtraSpawn: 2
   _extraModChance: 5
@@ -1443,8 +1443,6 @@ MonoBehaviour:
   _maxWizardChance: 40
   _spawnBoxes:
   - {fileID: 1504930977188055303}
-  - {fileID: 8155111783968833317}
-  - {fileID: 913646883519655629}
   _spawnY: 1
   _maxEnemies: 15
   finishCircle: {fileID: 2507302764708169447}
