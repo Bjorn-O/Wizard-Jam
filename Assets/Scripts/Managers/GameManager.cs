@@ -46,10 +46,15 @@ public class GameManager : MonoBehaviour
         completionTime += Time.deltaTime;
     }
 
-    //public void SaveInventoryModifiers(Modifier[] modifiers)
-    //{
-    //    _savedInventory = modifiers;
-    //}
+    public void SaveInventoryModifiers(Modifier[] modifiers)
+    {
+        _savedInventory = modifiers;
+    }
+
+    public void ClearSavedInventory()
+    {
+        _savedInventory = null;
+    }
 
     //public void SaveSpellIndexModifiers(int spellIndex, Modifier[] modifiers)
     //{
@@ -61,10 +66,10 @@ public class GameManager : MonoBehaviour
     //    }
     //}
 
-    //public Modifier[] GetSavedInventoryModifiers()
-    //{
-    //    return _savedInventory;
-    //}
+    public Modifier[] GetSavedInventoryModifiers()
+    {
+        return _savedInventory;
+    }
 
     //public Modifier[] GetSavedModifiersForSpell(int spellIndex)
     //{

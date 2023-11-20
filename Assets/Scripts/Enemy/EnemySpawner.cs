@@ -33,12 +33,14 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform[] _spawnBoxes;
     [SerializeField] private float _spawnY = 1;
     [SerializeField] private int _maxEnemies = 30;
+    [SerializeField] private GameObject finishCircle;
 
     private int _enemiesKilled = 0;
 
     // Start is called before the first frame update
     void Awake()
     {
+        finishCircle.SetActive(false);
         enemyManager = FindObjectOfType<EnemyManager>();
     }
 
@@ -120,7 +122,7 @@ public class EnemySpawner : MonoBehaviour
         {
             int modCount = _modCountDifficulty * (int)_difficulty;
 
-            if (Random.Range(0, 100) < _extraModChance)
+            if (Random.Range(0, 100) < _extraModChance + (GameManager.instance.loopCount * 2))
                 modCount++;
 
             if (modCount > 3)
@@ -141,7 +143,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (_enemiesKilled >= _enemies.Count)
         {
-            print("Killed every enemy!");
+            finishCircle.SetActive(true);
         }
     }
 }
