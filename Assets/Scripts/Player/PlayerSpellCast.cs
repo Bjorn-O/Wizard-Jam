@@ -81,6 +81,31 @@ public class PlayerSpellCast : MonoBehaviour
         StartCoroutine(spell.CastSpell());
     }
 
+    //public void SaveAllModifiers()
+    //{
+    //    for (int i = 0; i < spells.Length; i++)
+    //    {
+    //        GameManager.instance.SaveSpellIndexModifiers(i, spells[i].Modifiers.ToArray());
+    //    }
+    //}
+
+    //public void GetAllModifiers()
+    //{
+    //    for (int i = 0; i < spells.Length; i++)
+    //    {
+    //        Modifier[] mods = GameManager.instance.GetSavedModifiersForSpell(i);
+    //        spells[i].ClearModifiers();
+
+    //        foreach (var mod in mods)
+    //        {
+    //            if (mod == null)
+    //                continue;
+
+    //            spells[i].AddModifier(mod);
+    //        }
+    //    }
+    //}
+
     private void OnHotbar1()
     {
         CastSpell(0);

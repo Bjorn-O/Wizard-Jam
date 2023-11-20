@@ -34,6 +34,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _spawnY = 1;
     [SerializeField] private int _maxEnemies = 30;
 
+    private int _enemiesKilled = 0;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -51,6 +53,9 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemies()
     {
+        if (_enemiesKilled > 0)
+            return;
+
         int countToSpawn = Random.Range(_spawnCount, _spawnCount + _randomExtraSpawn);
         countToSpawn += _extraSpawnDifficulty * (int)_difficulty;
 
@@ -73,11 +78,11 @@ public class EnemySpawner : MonoBehaviour
 
             _enemies.Add(enemy);
 
-            if (!_subbedEnemies.Contains(enemy))
-            {
-                _subbedEnemies.Add(enemy);
-                enemy.characterStats.OnDeath.AddListener(_ => _enemies.Remove(enemy));
-            }
+            //if (!_subbedEnemies.Contains(enemy))
+            //{
+            //    _subbedEnemies.Add(enemy);
+            //    enemy.characterStats.OnDeath.AddListener(_ => _enemies.Remove(enemy));
+            //}
 
             PlaceEnemy(enemy);
         }
@@ -85,6 +90,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void PlaceEnemy(EnemyReferences enemy)
     {
+        enemy.characterStats.OnDeath.AddListener(_ => { _enemiesKilled++; CheckOpenDoors(); });
         enemy.navMeshAgent.enabled = false;
         Transform enemyTransform = enemy.transform;
 
@@ -129,5 +135,13 @@ public class EnemySpawner : MonoBehaviour
         enemy.enemySpellcast.ApplyMods();
 
         enemy.navMeshAgent.enabled = true;
+    }
+
+    private void CheckOpenDoors()
+    {
+        if (_enemiesKilled >= _enemies.Count)
+        {
+            print("Killed every enemy!");
+        }
     }
 }

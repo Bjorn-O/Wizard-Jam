@@ -61,6 +61,12 @@ public class PlayerInventory : MonoBehaviour
         _modifierCount.Remove(modifier);
     }
 
+    //public void SaveInventory()
+    //{
+    //    _modifiers.Clear();
+    //    _modifiers.AddRange(GameManager.instance.GetSavedInventoryModifiers());
+    //}
+
     private void OnInventory()
     {
         bool showingPanels = panelManagerUI.ToggleInventoryAndCardPanel();

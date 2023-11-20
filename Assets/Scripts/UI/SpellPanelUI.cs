@@ -16,6 +16,11 @@ public class SpellPanelUI : MonoBehaviour
             return;
         }
 
+        if (_spellsAdded >= _spellCardUIs.Length)
+        {
+            _spellsAdded = 0;
+        }
+
         SpellCardUI cardUI = _spellCardUIs[_spellsAdded];
         _spellCardPair.Add(spell, cardUI);
         cardUI.UpdateStartingCardStats(spell);
