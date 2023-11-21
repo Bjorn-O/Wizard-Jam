@@ -14,7 +14,8 @@ public class EnemySpawner : MonoBehaviour
     [Header("Spawn values (values change by loop count)")]
     [SerializeField] private int _spawnCount = 3;
     [SerializeField] private int _randomExtraSpawn = 2;
-    [SerializeField] private int _extraModChance = 5;
+    [SerializeField] private int _modChance = 30;
+    [SerializeField] private int _extraModChancePenalty = 15;
 
     [Header("Difficulty based values (values for normal)")]
     [SerializeField] private int _extraSpawnDifficulty = 1;
@@ -137,13 +138,21 @@ public class EnemySpawner : MonoBehaviour
 
         foreach (var spell in enemy.enemySpellcast.Spells)
         {
-            int modCount = _modCountDifficulty * (int)_difficulty;
+            int modCount = 0;
+            int chance = _modChance;
 
-            if (Random.Range(0, 100) < _extraModChance + (GameManager.instance.loopCount * 2))
-                modCount++;
+            for (int i = 0; i < 3; i++)
+            {
+                int loopedChance = chance + (GameManager.instance.loopCount * 2);
 
-            if (modCount > 3)
-                modCount = 3;
+                if (loopedChance > 50)
+                    loopedChance = 50;
+
+                if (Random.Range(0, 100) < loopedChance)
+                    modCount++;
+
+                chance -= _extraModChancePenalty;
+            }
 
             for (int i = 0; i < modCount; i++)
             {
