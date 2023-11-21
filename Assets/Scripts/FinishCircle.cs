@@ -6,7 +6,6 @@ public class FinishCircle : MonoBehaviour
 {
     private bool _entered = false;
     [SerializeField] private Chest chest1;
-    [SerializeField] private Chest chest2;
     private EnemySpawner enemySpawner;
     private PanelManagerUI panelManagerUI;
 
@@ -35,9 +34,7 @@ public class FinishCircle : MonoBehaviour
     public void ReloadScene()
     {
         chest1.opened = false;
-        chest2.opened = false;
         chest1.CloseChest();
-        chest2.CloseChest();
 
         GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(0, 1.6f, 0);
 

@@ -13052,7 +13052,7 @@ PrefabInstance:
     - target: {fileID: 3836240863699516353, guid: 52de4907c4d161b4f8915e39f780abb7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.256169
+      value: 14.3
       objectReference: {fileID: 0}
     - target: {fileID: 3836240863699516353, guid: 52de4907c4d161b4f8915e39f780abb7,
         type: 3}
@@ -13062,7 +13062,7 @@ PrefabInstance:
     - target: {fileID: 3836240863699516353, guid: 52de4907c4d161b4f8915e39f780abb7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.858146
+      value: 7.95
       objectReference: {fileID: 0}
     - target: {fileID: 3836240863699516353, guid: 52de4907c4d161b4f8915e39f780abb7,
         type: 3}
@@ -13867,6 +13867,7 @@ PrefabInstance:
     - {fileID: 8213621112284582910, guid: 52de4907c4d161b4f8915e39f780abb7, type: 3}
     - {fileID: 8562036745253167776, guid: 52de4907c4d161b4f8915e39f780abb7, type: 3}
     - {fileID: 3574677462073630085, guid: 52de4907c4d161b4f8915e39f780abb7, type: 3}
+    - {fileID: 3500618518963388809, guid: 52de4907c4d161b4f8915e39f780abb7, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5082131303345357593, guid: 52de4907c4d161b4f8915e39f780abb7,
         type: 3}
@@ -13886,11 +13887,11 @@ PrefabInstance:
       addedObject: {fileID: 1864848458}
     - targetCorrespondingSourceObject: {fileID: 5082131303345357593, guid: 52de4907c4d161b4f8915e39f780abb7,
         type: 3}
-      insertIndex: 9
+      insertIndex: 8
       addedObject: {fileID: 1310558748}
     - targetCorrespondingSourceObject: {fileID: 5082131303345357593, guid: 52de4907c4d161b4f8915e39f780abb7,
         type: 3}
-      insertIndex: 10
+      insertIndex: 9
       addedObject: {fileID: 1010324039}
     - targetCorrespondingSourceObject: {fileID: 5082131303345357593, guid: 52de4907c4d161b4f8915e39f780abb7,
         type: 3}

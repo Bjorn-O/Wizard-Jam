@@ -715,7 +715,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: you can combine these modifiers with your spells in your inventory
+  m_text: you can combine modifiers with your spells in your inventory
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d0ce95049218a7449bc4fc8d4cf33f44, type: 2}
   m_sharedMaterial: {fileID: -1363888018913259795, guid: d0ce95049218a7449bc4fc8d4cf33f44,
@@ -743,7 +743,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12.7
+  m_fontSize: 12.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3751,7 +3751,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: got new modifiers
+  m_text: got new modifier(s)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d0ce95049218a7449bc4fc8d4cf33f44, type: 2}
   m_sharedMaterial: {fileID: -1363888018913259795, guid: d0ce95049218a7449bc4fc8d4cf33f44,
@@ -3779,7 +3779,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.6
+  m_fontSize: 23.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5018,7 +5018,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 213, y: -20.758003}
+  m_AnchoredPosition: {x: 190, y: -20.758003}
   m_SizeDelta: {x: 32.8965, y: 32.8966}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &458420986432449929

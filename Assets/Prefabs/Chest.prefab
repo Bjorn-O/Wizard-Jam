@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lootManager: {fileID: 0}
-  _minMaxModifiers: {x: 1, y: 2}
+  _extraModChance: 40
   openText: {fileID: 0}
   opened: 0
 --- !u!54 &2478379990441143190
