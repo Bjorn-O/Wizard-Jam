@@ -24,6 +24,7 @@ public class SlashSpell : Spell
                 if (_characterStats.Mana < manaCost)
                 {
                     PlayerSpellCast._audioSource.PlayOneShot(cantCastSound);
+                    startingCooldown = cooldown;
                     yield break;
                 }
 
