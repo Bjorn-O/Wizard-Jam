@@ -39,8 +39,6 @@ public class Bolt : SpellEffect
                 enemyStats.TakeDamage(damage, null, forcePoint != null ?
                     (other.transform.position - forcePoint.position).normalized * (damage * forceMultiplier) : Vector3.zero);
 
-            print(other.gameObject.name);
-
             var hitMark = Instantiate(hitEffect, transform.position, Quaternion.identity);
             PlayerSpellCast._audioSource.PlayOneShot(spellEffectSound);
             Destroy(hitMark, effectTimer);

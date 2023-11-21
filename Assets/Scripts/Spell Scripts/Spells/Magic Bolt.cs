@@ -38,8 +38,15 @@ public class MagicBolt : Spell
             SpellEffect bolt = spellEffectPool.Get();
             bolt.transform.position =  castTransform.position;
             bolt.transform.rotation =  camTransform.rotation;
-            bolt.transform.localScale *= effectScale;
+            bolt.transform.localScale = Vector3.one * effectScale;
             bolt.damage = damage;
+
+            if (_modifyParticles)
+            {
+                SpellVfxManager spellVfx = bolt.GetComponent<SpellVfxManager>();
+                spellVfx.ModifyParticleSystems(effectAmount, GetElementsFromMods().ToArray());
+            }
+
             if (!(bolt as Bolt).addedEventListener)
             {
                 (bolt as Bolt).OnHitEvent.AddListener(() => { spellEffectPool.Release(bolt); PlayerSpellCast._audioSource.PlayOneShot(bolt.spellEffectSound); });
@@ -75,7 +82,7 @@ public class MagicBolt : Spell
                 bolt.transform.Rotate(0, degrees, 0);
 
                 //Apply Spell stats to object
-                bolt.transform.localScale *= effectScale;
+                bolt.transform.localScale = Vector3.one * effectScale;
                 bolt.damage = damage;
                 if (!(bolt as Bolt).addedEventListener)
                 {
@@ -87,5 +94,7 @@ public class MagicBolt : Spell
                 shotPosition++;
             }
         }
+
+        _modifyParticles = false;
     }
 }

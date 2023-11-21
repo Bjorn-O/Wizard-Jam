@@ -45,7 +45,7 @@ public class ArcaneCircle : Spell
             spellVfx.ModifyParticleSystems(effectAmount, GetElementsFromMods().ToArray());
         }
 
-        circleEffect.transform.localScale *= effectScale;
+        circleEffect.transform.localScale = Vector3.one * effectScale;
         circleEffect.transform.position = location;
         circleEffect.transform.up = rot;
         circleEffect.transform.localScale = transform.localScale;

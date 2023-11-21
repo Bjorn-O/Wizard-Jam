@@ -225,7 +225,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.9297759, g: 0.49622637, b: 1, a: 1}
+      maxColor: {r: 0.7217546, g: 0.27492344, b: 0.79622644, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1302,7 +1302,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -4962,7 +4962,7 @@ MonoBehaviour:
   materialsToChange: []
   _originalColorMaterials: []
   elementalEffects: []
-  emmisionRateModMultiplier: 0.75
+  emmisionRateModMultiplier: 0
 --- !u!1 &1308365375310989978
 GameObject:
   m_ObjectHideFlags: 0
