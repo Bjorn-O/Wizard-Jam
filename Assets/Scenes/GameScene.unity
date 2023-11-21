@@ -9114,6 +9114,11 @@ PrefabInstance:
       objectReference: {fileID: 2070046819}
     - target: {fileID: 565879354148202207, guid: 987b88c9477d04a44b14acbe7506f549,
         type: 3}
+      propertyPath: _sensitivity
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 565879354148202207, guid: 987b88c9477d04a44b14acbe7506f549,
+        type: 3}
       propertyPath: _cameraHolder
       value: 
       objectReference: {fileID: 2070046819}

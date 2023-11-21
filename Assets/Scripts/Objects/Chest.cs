@@ -25,6 +25,7 @@ public class Chest : MonoBehaviour
             return;
 
         opened = true;
+        openText.SetActive(false);
         _anim.SetTrigger("Open");
 
         List<Modifier> modsToGive = new List<Modifier>();
