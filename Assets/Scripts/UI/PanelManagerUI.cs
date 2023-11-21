@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PanelManagerUI : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PanelManagerUI : MonoBehaviour
     [SerializeField] private GameObject deathPanelUI;
     [SerializeField] private GameObject fadeOut;
     [SerializeField] private GameObject fadeIn;
+    public TextMeshProUGUI loopCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +63,7 @@ public class PanelManagerUI : MonoBehaviour
 
     private void ReloadScene()
     {
+        loopCounter.text = "0";
         GameManager.instance.completionTime = 0;
         GameManager.instance.loopCount = 0;
         GameManager.instance.killCount = 0;

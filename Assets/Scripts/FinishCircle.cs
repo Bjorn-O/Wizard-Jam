@@ -38,6 +38,7 @@ public class FinishCircle : MonoBehaviour
 
         GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(0, 1.6f, 0);
 
+        panelManagerUI.loopCounter.text = GameManager.instance.loopCount.ToString();
         panelManagerUI.ShowFadeOut();
         enemySpawner._enemiesKilled = 0;
         enemySpawner.finishCircle.SetActive(false);

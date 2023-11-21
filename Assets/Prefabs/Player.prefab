@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 20
-  baseManaCost: 10
+  baseManaCost: 7
   baseCoolDown: 1
   baseEffectScale: 1
   baseEffectAmount: 1
@@ -838,7 +838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 10
-  baseManaCost: 5
+  baseManaCost: 3
   baseCoolDown: 0.75
   baseEffectScale: 1
   baseEffectAmount: 1
