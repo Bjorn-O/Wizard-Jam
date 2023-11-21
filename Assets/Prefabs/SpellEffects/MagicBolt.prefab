@@ -4958,6 +4958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   excludeSystems:
   - {fileID: 6048177045514294032}
+  - {fileID: 1128617620391096349}
   objectEffects: []
   materialsToChange: []
   _originalColorMaterials: []

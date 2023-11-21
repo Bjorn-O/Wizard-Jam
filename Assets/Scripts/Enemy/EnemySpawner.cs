@@ -73,7 +73,6 @@ public class EnemySpawner : MonoBehaviour
 
         int countToSpawn = Random.Range(_spawnCount, _spawnCount + _randomExtraSpawn) + GameManager.instance.loopCount;
         countToSpawn += _extraSpawnDifficulty * (int)_difficulty;
-        print(countToSpawn);
 
         float wizChance = _wizardChance + 
             (_extraWizardChanceDifficulty * (int)_difficulty) + (_extraWizardChanceLoop * GameManager.instance.loopCount);
