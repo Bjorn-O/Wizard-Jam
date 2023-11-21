@@ -542,7 +542,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chest1: {fileID: 3326930939501870522}
-  chest2: {fileID: 7611055368772862897}
 --- !u!135 &8476503252469040928
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1432,10 +1431,11 @@ MonoBehaviour:
   _difficulty: 0
   _spawnCount: 4
   _randomExtraSpawn: 2
-  _extraModChance: 5
+  _modChance: 30
+  _extraModChancePenalty: 15
   _extraSpawnDifficulty: 2
   _modCountDifficulty: 1
-  _enemyExtraLoopHealth: 8
+  _enemyExtraLoopHealth: 7
   _enemyExtraDifficultyHealth: 25
   _wizardChance: 20
   _extraWizardChanceDifficulty: 5
@@ -10275,18 +10275,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ac3c912390ca144997bfff63ddcf4b6, type: 3}
---- !u!114 &7611055368772862897 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5982751814116081945, guid: 2ac3c912390ca144997bfff63ddcf4b6,
-    type: 3}
-  m_PrefabInstance: {fileID: 4222379307160289960}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5759d2da7cdf2cf409b327cde02954b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &8253220314007143882 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5193129474955200354, guid: 2ac3c912390ca144997bfff63ddcf4b6,
