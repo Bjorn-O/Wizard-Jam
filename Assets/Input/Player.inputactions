@@ -343,6 +343,17 @@
                 },
                 {
                     "name": "",
+                    "id": "4de780c9-17f7-4a58-af37-b57104b201e5",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "82a01c6e-1035-420d-a61b-51cf9f4cdaf2",
                     "path": "<Keyboard>/e",
                     "interactions": "",
@@ -881,6 +892,17 @@
                     "name": "",
                     "id": "707819d4-c3ce-474b-b1fa-ffbef10bad46",
                     "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2627e77f-e91f-47d0-a95d-66cbf3d81949",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

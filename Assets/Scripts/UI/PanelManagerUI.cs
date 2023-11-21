@@ -61,6 +61,9 @@ public class PanelManagerUI : MonoBehaviour
 
     private void ReloadScene()
     {
+        GameManager.instance.completionTime = 0;
+        GameManager.instance.loopCount = 0;
+        GameManager.instance.killCount = 0;
         LevelLoader.instance.ReloadCurrentScene();
     }
 
