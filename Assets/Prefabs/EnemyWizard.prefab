@@ -562,6 +562,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1630794972795428178, guid: e941ab3a23092f84f8975ba7b0fa77e9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 9054928168843377129, guid: e941ab3a23092f84f8975ba7b0fa77e9,
+        type: 3}
+    - target: {fileID: 1630794972795428178, guid: e941ab3a23092f84f8975ba7b0fa77e9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 4835078630258379571, guid: e941ab3a23092f84f8975ba7b0fa77e9,
+        type: 3}
     - target: {fileID: 1950410803469827785, guid: e941ab3a23092f84f8975ba7b0fa77e9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2047,7 +2059,7 @@ PrefabInstance:
     - target: {fileID: 1444785115482607239, guid: 03478b11052b4154f81abf41a3e393d7,
         type: 3}
       propertyPath: maxHealth
-      value: 75
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 1459871298295909408, guid: 03478b11052b4154f81abf41a3e393d7,
         type: 3}
@@ -2183,6 +2195,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 4.656841e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9150826493055776390, guid: 03478b11052b4154f81abf41a3e393d7,
+        type: 3}
+      propertyPath: _matIndex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9150826493055776390, guid: 03478b11052b4154f81abf41a3e393d7,
         type: 3}

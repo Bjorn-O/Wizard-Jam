@@ -288,6 +288,7 @@ MonoBehaviour:
   enemyDamage: {fileID: 0}
   enemySpellcast: {fileID: 0}
   player: {fileID: 0}
+  ps: {fileID: 6138910204040335548}
 --- !u!114 &5088425803776816557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,7 +376,7 @@ MonoBehaviour:
   showHitEffect: 0
   _blinkTimer: 0
   _blinkDuration: 0.1
-  _blinkIntesity: 10
+  _blinkIntesity: 15
   _fadeDelay: 5
   _fadeDuration: 3
   _dropChance: 30
@@ -2760,6 +2761,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5341398465304860097}
     m_Modifications:
+    - target: {fileID: 196413138473561480, guid: c4f829cb7dd4b864caf8832ec5b1ee55,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9157105887693424661, guid: c4f829cb7dd4b864caf8832ec5b1ee55,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -2769,6 +2775,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9157105887693468087, guid: c4f829cb7dd4b864caf8832ec5b1ee55,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9157105887711818997, guid: c4f829cb7dd4b864caf8832ec5b1ee55,
         type: 3}
@@ -2838,6 +2849,12 @@ PrefabInstance:
 --- !u!4 &6138910204025132540 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9157105887711818997, guid: c4f829cb7dd4b864caf8832ec5b1ee55,
+    type: 3}
+  m_PrefabInstance: {fileID: 3036931414445728009}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6138910204040335548 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9157105887693468085, guid: c4f829cb7dd4b864caf8832ec5b1ee55,
     type: 3}
   m_PrefabInstance: {fileID: 3036931414445728009}
   m_PrefabAsset: {fileID: 0}

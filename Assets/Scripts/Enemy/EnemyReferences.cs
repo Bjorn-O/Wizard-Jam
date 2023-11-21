@@ -13,6 +13,7 @@ public class EnemyReferences : MonoBehaviour
     [HideInInspector] public EnemyDamage enemyDamage;
     [HideInInspector] public EnemySpellcast enemySpellcast;
     [HideInInspector] public Transform player;
+    public ParticleSystem ps;
 
     private void Awake()
     {

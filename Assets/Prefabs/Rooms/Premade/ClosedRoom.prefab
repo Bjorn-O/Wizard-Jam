@@ -1435,7 +1435,7 @@ MonoBehaviour:
   _extraModChance: 5
   _extraSpawnDifficulty: 2
   _modCountDifficulty: 1
-  _enemyExtraLoopHealth: 2
+  _enemyExtraLoopHealth: 3
   _enemyExtraDifficultyHealth: 25
   _wizardChance: 20
   _extraWizardChanceDifficulty: 5
@@ -1443,6 +1443,8 @@ MonoBehaviour:
   _maxWizardChance: 40
   _spawnBoxes:
   - {fileID: 1504930977188055303}
+  - {fileID: 0}
+  - {fileID: 0}
   _spawnY: 1
   _maxEnemies: 15
   finishCircle: {fileID: 2507302764708169447}

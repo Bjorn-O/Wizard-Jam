@@ -19,7 +19,7 @@ public class InventoryUI : MonoBehaviour
         if (_modifiersAdded.Contains(modifier))
         {
             InventorySlotUI slot = _modSlotPair[modifier];
-            slot.UpdateSlot(modifier, count);
+            slot.UpdateSlot(modifier, true);
         }
         else
         {
@@ -38,7 +38,7 @@ public class InventoryUI : MonoBehaviour
                 return;
 
             _modSlotPair.Add(modifier, selectedSlot);
-            selectedSlot.UpdateSlot(modifier, count);
+            selectedSlot.UpdateSlot(modifier, true);
             _modifiersAdded.Add(modifier);
         }
     }

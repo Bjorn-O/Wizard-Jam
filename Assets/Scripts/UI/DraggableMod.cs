@@ -33,7 +33,7 @@ public class DraggableMod : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 GameObject replacementObj = Instantiate(gameObject, transform.parent);
                 replacementMod = replacementObj.GetComponent<DraggableMod>();
             }
-            inventorySlotUI.UpdateSlot(null, inventorySlotUI.Count - 1);
+            inventorySlotUI.UpdateSlot(null, false);
         }
         else
         {
@@ -58,7 +58,7 @@ public class DraggableMod : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         if (inInventory)
         {
-            inventorySlotUI.UpdateSlot(null, inventorySlotUI.Count + 1);
+            inventorySlotUI.UpdateSlot(null, true);
 
             if (cardUI == null)
             {

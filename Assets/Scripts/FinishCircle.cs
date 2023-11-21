@@ -17,7 +17,7 @@ public class FinishCircle : MonoBehaviour
         {
             _entered = true;
 
-            other.attachedRigidbody.GetComponent<PlayerInventory>().SaveInventory();
+            //other.attachedRigidbody.GetComponent<PlayerInventory>().SaveInventory();
             GameManager.instance.loopCount++;
             FindObjectOfType<PanelManagerUI>().ShowFade();
             Invoke(nameof(ReloadScene), 0.2f);

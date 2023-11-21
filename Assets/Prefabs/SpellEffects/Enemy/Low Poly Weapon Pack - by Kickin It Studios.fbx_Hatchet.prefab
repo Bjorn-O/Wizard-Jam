@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  spellEffectSound: {fileID: 0}
   hitEffects: []
   forceMultiplier: 1
   forcePoint: {fileID: 0}
@@ -184,8 +185,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0076625706, y: 0.007722348, z: 0.0008189282}
-  m_Center: {x: -0.0026770805, y: -0.00028016316, z: 0.000012670241}
+  m_Size: {x: 0.0076625706, y: 0.007722348, z: 0.007882827}
+  m_Center: {x: -0.0026770898, y: -0.00028016325, z: 0.0004011939}
 --- !u!1 &6014120160738012026
 GameObject:
   m_ObjectHideFlags: 0

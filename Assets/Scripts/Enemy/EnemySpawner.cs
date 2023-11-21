@@ -40,7 +40,6 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        finishCircle.SetActive(false);
         enemyManager = FindObjectOfType<EnemyManager>();
     }
 
@@ -51,6 +50,8 @@ public class EnemySpawner : MonoBehaviour
 
     public void StartSpawnEnemies()
     {
+        finishCircle.SetActive(false);
+        _enemies.Clear();
         StartCoroutine(SpawnEnemies());
     }
 
@@ -70,14 +71,18 @@ public class EnemySpawner : MonoBehaviour
 
         yield return new WaitForSeconds(2);
 
-        int countToSpawn = Random.Range(_spawnCount, _spawnCount + _randomExtraSpawn);
+        int countToSpawn = Random.Range(_spawnCount, _spawnCount + _randomExtraSpawn) + GameManager.instance.loopCount;
         countToSpawn += _extraSpawnDifficulty * (int)_difficulty;
+        print(countToSpawn);
 
         float wizChance = _wizardChance + 
             (_extraWizardChanceDifficulty * (int)_difficulty) + (_extraWizardChanceLoop * GameManager.instance.loopCount);
 
         if (wizChance > _maxWizardChance)
             wizChance = _maxWizardChance;
+
+        if (countToSpawn > _maxEnemies)
+            countToSpawn = _maxEnemies;
 
         for (int i = 0; i < countToSpawn; i++)
         {
@@ -150,6 +155,7 @@ public class EnemySpawner : MonoBehaviour
         enemy.enemySpellcast.ApplyMods();
 
         enemy.navMeshAgent.enabled = true;
+        enemy.ps.Play();
     }
 
     private void CheckOpenDoors()

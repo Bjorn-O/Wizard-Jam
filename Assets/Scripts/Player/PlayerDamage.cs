@@ -31,7 +31,7 @@ public class PlayerDamage : MonoBehaviour
 
     public void OnDeath()
     {
-        GameManager.instance.ClearSavedInventory();
+        //GameManager.instance.ClearSavedInventory();
         _playerInventory.SwitchControlMap("UI");
         _deathFinishPanelUI.ShowPanel(true);
     }

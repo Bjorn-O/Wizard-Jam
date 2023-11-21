@@ -395,8 +395,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
-  mana: 100
-  maxMana: 100
+  mana: 50
+  maxMana: 50
   OnHit:
     m_PersistentCalls:
       m_Calls:
@@ -433,18 +433,6 @@ MonoBehaviour:
       - m_Target: {fileID: 276712273614955672}
         m_TargetAssemblyTypeName: PlayerDamage, Assembly-CSharp
         m_MethodName: OnDeath
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6430066848852348058}
-        m_TargetAssemblyTypeName: PlayerInventory, Assembly-CSharp
-        m_MethodName: SaveInventory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -853,12 +841,12 @@ MonoBehaviour:
   baseEffectScale: 1
   baseEffectAmount: 1
   baseCastAmount: 1
-  damage: 0
-  manaCost: 0
-  cooldown: 0
-  effectScale: 0
-  effectAmount: 0
-  castAmount: 0
+  damage: 10
+  manaCost: 5
+  cooldown: 0.75
+  effectScale: 1
+  effectAmount: 1
+  castAmount: 1
   multiCastDelay: 0
   modifiers: []
   spellName: Dash
@@ -883,6 +871,7 @@ MonoBehaviour:
   _fovTweenTime: 0.25
   _effectOffsetZ: 8.5
   _effectExtraOffsetZ: 2
+  material: {fileID: 2100000, guid: 22ed2c29faf36d4498b33a6f32c91d9f, type: 2}
 --- !u!1001 &7658281202699058368
 PrefabInstance:
   m_ObjectHideFlags: 0

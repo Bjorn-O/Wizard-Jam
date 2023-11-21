@@ -7,7 +7,8 @@ public class Chest : MonoBehaviour
     private Animator _anim;
 
     [SerializeField] private LootManager _lootManager;
-    [SerializeField] private Vector2 _minMaxModifiers = new Vector2(1, 2);
+    [SerializeField] private int minModGain = 1;
+    [SerializeField] private int maxModGain = 2;
     [SerializeField] private GameObject openText;
     public bool opened = false;
 
@@ -27,7 +28,7 @@ public class Chest : MonoBehaviour
         _anim.SetTrigger("Open");
 
         List<Modifier> modsToGive = new List<Modifier>();
-        for (int i = 0; i < Random.Range(_minMaxModifiers.x, _minMaxModifiers.y); i++)
+        for (int i = 0; i < Random.Range(minModGain, maxModGain + 1); i++)
         {
             modsToGive.Add(_lootManager.GetRandomModifier());
         }

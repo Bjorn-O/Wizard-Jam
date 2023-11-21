@@ -31,6 +31,8 @@ public class DashSpell : Spell
     private bool _resetCastAmount = true;
     private bool _modifyParticles;
 
+    [SerializeField] private Material material;
+
     public override IEnumerator CastSpell()
     {
         if (_resetCastAmount)
@@ -108,6 +110,9 @@ public class DashSpell : Spell
     // Start is called before the first frame update
     void Start()
     {
+        Color color = Color.white;
+        color.a = material.color.a;
+        material.color = color;
         _playerMov = FindObjectOfType<PlayerMovement>();
         _rb = _playerMov.GetComponent<Rigidbody>();
         _characterStats = _rb.GetComponent<CharacterStats>();

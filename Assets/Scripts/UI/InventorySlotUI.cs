@@ -35,7 +35,7 @@ public class InventorySlotUI : MonoBehaviour, IDropHandler
         _countText.enabled = false;
     }
 
-    public void UpdateSlot(Modifier modifier, int count)
+    public void UpdateSlot(Modifier modifier, bool addCount)
     {
         if (modifier != null)
         {
@@ -43,11 +43,19 @@ public class InventorySlotUI : MonoBehaviour, IDropHandler
             _icon.enabled = true;
             _modName = modifier.name;
             _icon.sprite = modifier.Icon;
+
+            if (_modParent.childCount == 0)
+            {
+                GameObject replacement = Instantiate(_icon.gameObject, _modParent, false);
+                replacement.transform.localPosition = Vector2.zero;
+                replacement.GetComponent<RectTransform>().sizeDelta = Vector2.one * _size;
+                replacement.GetComponent<DraggableMod>().inInventory = true;
+            }
         }
 
-        _count = count;
-        _countText.enabled = count > 0;
-        _countText.text = "x" + count;
+        _count += addCount ? 1 : -1;
+        _countText.enabled = _count > 0;
+        _countText.text = "x" + _count;
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -58,7 +66,7 @@ public class InventorySlotUI : MonoBehaviour, IDropHandler
         {
             if (_modifier == dragMod.modifier)
             {
-                UpdateSlot(null, _count + 1);
+                UpdateSlot(null, true);
                 Destroy(dragMod.gameObject);
                 return;
             }

@@ -18,6 +18,9 @@ public class Bolt : SpellEffect
 
     private void Update()
     {
+        if (Mathf.Abs(transform.position.x) > 40 || transform.position.y < -5 || Mathf.Abs(transform.position.z) > 40)
+            OnHitEvent?.Invoke();
+
         transform.position += transform.forward * speed * Time.deltaTime;
     }
 
@@ -25,9 +28,10 @@ public class Bolt : SpellEffect
     {
         int targetMask = LayerMask.NameToLayer(checkLayer);
         int groundMask = LayerMask.NameToLayer(groundLayer);
+        int defaultMask = LayerMask.NameToLayer("Default");
         if (targetMask == -1) return;
 
-        if (other.gameObject.layer == targetMask || other.gameObject.layer == 0 || other.gameObject.layer == 6)
+        if (other.gameObject.layer == targetMask || other.gameObject.layer == defaultMask || other.gameObject.layer == groundMask)
         {
             CharacterStats enemyStats = other.attachedRigidbody != null ? other.attachedRigidbody.GetComponent<CharacterStats>() : null;
 
@@ -35,13 +39,12 @@ public class Bolt : SpellEffect
                 enemyStats.TakeDamage(damage, null, forcePoint != null ?
                     (other.transform.position - forcePoint.position).normalized * (damage * forceMultiplier) : Vector3.zero);
 
-            if (other.gameObject.layer == targetMask || other.gameObject.layer == groundMask)
-            {
-                var hitMark = Instantiate(hitEffect, transform.position, Quaternion.identity);
-                PlayerSpellCast._audioSource.PlayOneShot(spellEffectSound);
-                Destroy(hitMark, effectTimer);
-                OnHitEvent.Invoke();
-            }
+            print(other.gameObject.name);
+
+            var hitMark = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            PlayerSpellCast._audioSource.PlayOneShot(spellEffectSound);
+            Destroy(hitMark, effectTimer);
+            OnHitEvent?.Invoke();
         }
     }
 }

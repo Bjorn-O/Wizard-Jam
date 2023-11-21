@@ -24,15 +24,15 @@ public class PlayerInventory : MonoBehaviour
         panelManagerUI = FindObjectOfType<PanelManagerUI>(true);
         inventoryUI = FindObjectOfType<InventoryUI>(true);
 
-        Modifier[] savedMods = GameManager.instance.GetSavedInventoryModifiers();
+        //Modifier[] savedMods = GameManager.instance.GetSavedInventoryModifiers();
 
-        if (savedMods != null)
-        {
-            foreach (var modifier in savedMods)
-            {
-                AddMod(modifier);
-            }
-        }
+        //if (savedMods != null)
+        //{
+        //    foreach (var modifier in savedMods)
+        //    {
+        //        AddMod(modifier);
+        //    }
+        //}
     }
 
     public void AddMod(Modifier modifier)
@@ -66,10 +66,10 @@ public class PlayerInventory : MonoBehaviour
         _modifierCount.Remove(modifier);
     }
 
-    public void SaveInventory()
-    {
-        GameManager.instance.SaveInventoryModifiers(_modifiers.ToArray());
-    }
+    //public void SaveInventory()
+    //{
+    //    GameManager.instance.SaveInventoryModifiers(_modifiers.ToArray());
+    //}
 
     private void OnInventory()
     {
