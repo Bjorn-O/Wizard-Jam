@@ -42,6 +42,7 @@ public abstract class Spell : MonoBehaviour
     [SerializeField] protected UnityEvent onSpellCast;
     [SerializeField] protected UnityEvent onSpellCancelled;
     [SerializeField] protected AudioClip spellCastSound;
+    public AudioClip cantCastSound;
 
     protected IObjectPool<SpellEffect> spellEffectPool;
 

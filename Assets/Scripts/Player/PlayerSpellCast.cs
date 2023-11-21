@@ -76,7 +76,10 @@ public class PlayerSpellCast : MonoBehaviour
         Spell spell = spells[index];
 
         if (spell.manaCost > _characterStats.Mana || spellCooldowns[index] > 0)
+        {
+            _audioSource.PlayOneShot(spell.cantCastSound);
             return;
+        }
 
         _characterStats.Mana -= spell.manaCost;
         spellCooldowns[index] = spell.cooldown;

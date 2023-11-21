@@ -19,8 +19,14 @@ public class SlashSpell : Spell
 
         for (int i = 0; i < castAmount; i++)
         {
-            if (i != 0)
+            if (i > 0)
             {
+                if (_characterStats.Mana < manaCost)
+                {
+                    PlayerSpellCast._audioSource.PlayOneShot(cantCastSound);
+                    yield break;
+                }
+
                 _characterStats.Mana -= manaCost;
             }
 
@@ -63,9 +69,6 @@ public class SlashSpell : Spell
             }
 
             scaleX *= -1;
-
-            if (_characterStats.Mana < manaCost)
-                break;
         }
 
         cooldown = startingCooldown;

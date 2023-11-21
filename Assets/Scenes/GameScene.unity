@@ -9184,11 +9184,6 @@ PrefabInstance:
       objectReference: {fileID: 1191837337}
     - target: {fileID: 3619600747086408293, guid: 987b88c9477d04a44b14acbe7506f549,
         type: 3}
-      propertyPath: spellCastSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 49dc20bf6ee08cb41a463183fb8f28b3, type: 3}
-    - target: {fileID: 3619600747086408293, guid: 987b88c9477d04a44b14acbe7506f549,
-        type: 3}
       propertyPath: modifiers.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: a57b12865c23f7c4d8c5b4fb93b358d8,

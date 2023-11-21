@@ -70,6 +70,7 @@ MonoBehaviour:
   onSpellCancelled:
     m_PersistentCalls:
       m_Calls: []
+  spellCastSound: {fileID: 8300000, guid: 49dc20bf6ee08cb41a463183fb8f28b3, type: 3}
   OnApplyModifiers:
     m_PersistentCalls:
       m_Calls: []

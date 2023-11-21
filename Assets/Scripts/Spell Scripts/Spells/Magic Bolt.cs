@@ -6,11 +6,15 @@ public class MagicBolt : Spell
     [SerializeField] private Transform castTransform;
     [SerializeField] private Transform camTransform;
     [SerializeField] private AnimationCurve curve;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private Animator _anim;
+    private CharacterStats stats;
 
     private bool _modifyParticles;
 
     private void Start()
     {
+        stats = GetComponentInParent<CharacterStats>();
         OnApplyModifiers.AddListener(() => { _modifyParticles = true; });
     }
 
@@ -22,16 +26,31 @@ public class MagicBolt : Spell
     public override IEnumerator CastSpell()
     {
         for (int i = 0; i < castAmount; i++)
+        {
+            if (i > 0)
             {
-                FireSpellEffect(spellEffect, effectAmount);
-                onSpellCast?.Invoke();
-                yield return new WaitForSeconds(multiCastDelay);
+                if (stats.Mana < manaCost)
+                {
+                    audioSource.PlayOneShot(cantCastSound);
+                    yield break;
+                }
+
+                stats.Mana -= manaCost;
             }
+
+            FireSpellEffect(spellEffect, effectAmount);
+            onSpellCast?.Invoke();
+
+            yield return new WaitForSeconds(multiCastDelay);
         }
+    }
 
     protected override void FireSpellEffect(SpellEffect effect, float amount)
     {
-        PlayerSpellCast._audioSource.PlayOneShot(spellCastSound);
+        if (_anim != null)
+            _anim.SetTrigger("Shoot");
+
+        audioSource.PlayOneShot(spellCastSound);
 
         if (amount == 1)
         {

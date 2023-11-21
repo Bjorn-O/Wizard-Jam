@@ -6,6 +6,7 @@ public class ArcaneCircle : Spell
 {
     [SerializeField] private Transform camPosition;
     [SerializeField] private LayerMask layerMask;
+    private CharacterStats stats;
 
     [SerializeField] private float maxAngle;
     [SerializeField] private float explosionTimer;
@@ -14,6 +15,7 @@ public class ArcaneCircle : Spell
 
     private void Start()
     {
+        stats = GetComponentInParent<CharacterStats>();
         OnApplyModifiers.AddListener(() => { _modifyParticles = true; });
     }
 
@@ -24,6 +26,18 @@ public class ArcaneCircle : Spell
         cooldown = Mathf.Infinity;
         for (int i = 0; i < castAmount; i++)
         {
+            if (i > 0)
+            {
+                if (stats.Mana < manaCost)
+                {
+                    PlayerSpellCast._audioSource.PlayOneShot(cantCastSound);
+                    cooldown = startingCooldown;
+                    yield break;
+                }
+
+                stats.Mana -= manaCost;
+            }
+
             if (Physics.Raycast(transform.position, camPosition.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
             {
                 FireSpellEffect(spellEffect, effectAmount, hit.point, hit.normal);

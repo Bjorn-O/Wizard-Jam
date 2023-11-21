@@ -71,6 +71,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   spellCastSound: {fileID: 8300000, guid: c155cde50e931f841b243e3fc16ee8d3, type: 3}
+  cantCastSound: {fileID: 8300000, guid: ce0cd8f494558c8478c50ed6d550b8ef, type: 3}
   OnApplyModifiers:
     m_PersistentCalls:
       m_Calls: []
@@ -751,6 +752,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   spellCastSound: {fileID: 8300000, guid: 3097680afaf34784ebe2dbd219ca78de, type: 3}
+  cantCastSound: {fileID: 8300000, guid: ce0cd8f494558c8478c50ed6d550b8ef, type: 3}
   OnApplyModifiers:
     m_PersistentCalls:
       m_Calls: []
@@ -862,6 +864,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   spellCastSound: {fileID: 8300000, guid: 4346ee976e686b446bc42271b1258421, type: 3}
+  cantCastSound: {fileID: 8300000, guid: ce0cd8f494558c8478c50ed6d550b8ef, type: 3}
   OnApplyModifiers:
     m_PersistentCalls:
       m_Calls: []
@@ -935,6 +938,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MagicBolt
       objectReference: {fileID: 0}
+    - target: {fileID: 6376192852929500837, guid: ec04ef1f5354be84a854d287d6713703,
+        type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 887539498781648101}
+    - target: {fileID: 6376192852929500837, guid: ec04ef1f5354be84a854d287d6713703,
+        type: 3}
+      propertyPath: cantCastSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ce0cd8f494558c8478c50ed6d550b8ef, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

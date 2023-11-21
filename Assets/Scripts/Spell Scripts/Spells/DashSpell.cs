@@ -157,6 +157,11 @@ public class DashSpell : Spell
 
             if (_extraCasts <= 0 || _characterStats.Mana < manaCost)
             {
+                if (_characterStats.Mana < manaCost)
+                {
+                    PlayerSpellCast._audioSource.PlayOneShot(cantCastSound);
+                }
+
                 _resetCastAmount = true;
                 cooldown = startingCooldown;
             }

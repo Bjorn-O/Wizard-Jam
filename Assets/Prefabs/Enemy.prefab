@@ -407,7 +407,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.15
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -451,7 +451,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2050,7 +2050,7 @@ MonoBehaviour:
   onSpellCancelled:
     m_PersistentCalls:
       m_Calls: []
-  spellCastSound: {fileID: 0}
+  spellCastSound: {fileID: 8300000, guid: a1812215b02dcca44965a8234d032ea5, type: 3}
   OnApplyModifiers:
     m_PersistentCalls:
       m_Calls: []
@@ -2059,6 +2059,7 @@ MonoBehaviour:
   _casingIntensity: -2
   _offset: {x: 0.001, y: 0, z: 0.001}
   _magicalWeaponMat: {fileID: 2100000, guid: bade24d6d4c60614e9a64a81c4d9a616, type: 2}
+  audioSource: {fileID: -2110675183177553623}
 --- !u!1 &7076611451310878989
 GameObject:
   m_ObjectHideFlags: 0

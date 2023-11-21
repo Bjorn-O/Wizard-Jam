@@ -12,6 +12,7 @@ public class MeleeAttackSpell : Spell
     [SerializeField] private float _casingIntensity = -2;
     [SerializeField] private Vector3 _offset = new Vector3(0.001f, 0, 0.001f);
     [SerializeField] private Material _magicalWeaponMat;
+    [SerializeField] private AudioSource audioSource;
 
     public override IEnumerator CastSpell()
     {
@@ -20,6 +21,8 @@ public class MeleeAttackSpell : Spell
 
         for (int i = 0; i < castAmount; i++)
         {
+            audioSource.PlayOneShot(spellCastSound);
+
             for (int j = 0; j < _cols.Count; j++)
             {
                 if (j != 0)
