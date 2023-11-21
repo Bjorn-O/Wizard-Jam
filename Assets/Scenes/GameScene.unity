@@ -13296,11 +13296,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5661965739067845314, guid: 52de4907c4d161b4f8915e39f780abb7,
         type: 3}
-      propertyPath: _enemyExtraLoopHealth
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5661965739067845314, guid: 52de4907c4d161b4f8915e39f780abb7,
-        type: 3}
       propertyPath: _spawnBoxes.Array.data[1]
       value: 
       objectReference: {fileID: 1310558748}
