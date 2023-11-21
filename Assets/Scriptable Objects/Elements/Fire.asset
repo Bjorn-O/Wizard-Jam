@@ -19,11 +19,11 @@ MonoBehaviour:
   mods:
   - operation: 2
     targetStat: 0
-    value: 1.3
+    value: 1.4
   - operation: 2
     targetStat: 1
-    value: 1.2
+    value: 1.5
   - operation: 2
     targetStat: 2
-    value: 1.1
+    value: 1.2
   onHitEffects: []

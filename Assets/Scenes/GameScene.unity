@@ -4389,7 +4389,7 @@ PrefabInstance:
     - target: {fileID: 6967361487159559488, guid: c533c10f37d12c941bf5dfea26e26cac,
         type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -3309056508310971335, guid: c533c10f37d12c941bf5dfea26e26cac, type: 3}
@@ -4432,7 +4432,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.9249948, y: 0.89818305, z: 1.4018302}
+  m_Size: {x: 1.9249948, y: 18.68, z: 1.4018302}
   m_Center: {x: 0, y: 0.44909117, z: -0.0000002682209}
 --- !u!1001 &338890326
 PrefabInstance:
@@ -12460,7 +12460,7 @@ PrefabInstance:
     - target: {fileID: 6967361487159559488, guid: c533c10f37d12c941bf5dfea26e26cac,
         type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -3309056508310971335, guid: c533c10f37d12c941bf5dfea26e26cac, type: 3}
@@ -12503,7 +12503,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.9249948, y: 0.89818305, z: 1.4018302}
+  m_Size: {x: 1.9249948, y: 18.68, z: 1.4018302}
   m_Center: {x: 0, y: 0.44909117, z: -0.0000002682209}
 --- !u!65 &1637222420
 BoxCollider:
@@ -15986,7 +15986,7 @@ PrefabInstance:
     - target: {fileID: 6967361487159559488, guid: c533c10f37d12c941bf5dfea26e26cac,
         type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -3309056508310971335, guid: c533c10f37d12c941bf5dfea26e26cac, type: 3}
@@ -16029,7 +16029,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.9249948, y: 0.89818305, z: 1.4018302}
+  m_Size: {x: 1.9249948, y: 18.68, z: 1.4018302}
   m_Center: {x: 0, y: 0.44909117, z: -0.0000002682209}
 --- !u!1001 &1813025200
 PrefabInstance:

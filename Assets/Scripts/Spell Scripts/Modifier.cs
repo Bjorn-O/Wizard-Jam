@@ -27,13 +27,13 @@ public class Modifier : ScriptableObject
             { Operators.Divide, (a, b) => a / b }
     };
 
-    Dictionary<Operators, Func<float, float, float>> reverseOperatorDictionary = new Dictionary<Operators, Func<float, float, float>>
-    {
-            { Operators.Add, (a, b) => a - b },
-            { Operators.Subtract, (a, b) => a + b },
-            { Operators.Multiply, (a, b) => a / b },
-            { Operators.Divide, (a, b) => a * b }
-    };
+    //Dictionary<Operators, Func<float, float, float>> reverseOperatorDictionary = new Dictionary<Operators, Func<float, float, float>>
+    //{
+    //        { Operators.Add, (a, b) => a - b },
+    //        { Operators.Subtract, (a, b) => a + b },
+    //        { Operators.Multiply, (a, b) => a / b },
+    //        { Operators.Divide, (a, b) => a * b }
+    //};
 
     public void SetSpell(Spell targetSpell)
     {
@@ -73,11 +73,16 @@ public class Modifier : ScriptableObject
     
     public void RemoveSpell()
     {
-        for (int i = mods.Length - 1; i >= 0; i--)
+        if (_spell.Modifiers.Count == 0)
         {
-            Mod mod = mods[i];
-            Ref<float> statRef = _spell.GetStatRefByEnum(mod.targetStat);
-            statRef.Value = reverseOperatorDictionary[mod.operation](statRef.Value, mod.value);
+            _spell.ClearModifiers();
+            return;
+        }
+
+        _spell.ResetStats();
+        foreach (var modifier in _spell.Modifiers)
+        {
+            modifier.ApplyMod(false);
         }
 
         _spell.OnApplyModifiers?.Invoke();

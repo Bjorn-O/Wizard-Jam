@@ -7,6 +7,14 @@ public class FinishCircle : MonoBehaviour
     private bool _entered = false;
     [SerializeField] private Chest chest1;
     [SerializeField] private Chest chest2;
+    private EnemySpawner enemySpawner;
+    private PanelManagerUI panelManagerUI;
+
+    private void Awake()
+    {
+        panelManagerUI = FindObjectOfType<PanelManagerUI>();
+        enemySpawner = FindObjectOfType<EnemySpawner>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,7 +27,7 @@ public class FinishCircle : MonoBehaviour
 
             //other.attachedRigidbody.GetComponent<PlayerInventory>().SaveInventory();
             GameManager.instance.loopCount++;
-            FindObjectOfType<PanelManagerUI>().ShowFade();
+            panelManagerUI.ShowFade();
             Invoke(nameof(ReloadScene), 0.2f);
         }
     }
@@ -33,10 +41,10 @@ public class FinishCircle : MonoBehaviour
 
         GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(0, 1.6f, 0);
 
-        FindObjectOfType<PanelManagerUI>().ShowFadeOut();
-        FindObjectOfType<EnemySpawner>()._enemiesKilled = 0;
-        FindObjectOfType<EnemySpawner>().finishCircle.SetActive(false);
-        FindObjectOfType<EnemySpawner>().StartSpawnEnemies();
+        panelManagerUI.ShowFadeOut();
+        enemySpawner._enemiesKilled = 0;
+        enemySpawner.finishCircle.SetActive(false);
+        enemySpawner.StartSpawnEnemies();
 
         _entered = false;
     }

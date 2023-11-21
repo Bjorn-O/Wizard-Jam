@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a55d0b51066cf84ca37a69f1a72f84e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 25
-  baseManaCost: 5
+  baseDamage: 20
+  baseManaCost: 10
   baseCoolDown: 1
   baseEffectScale: 1
   baseEffectAmount: 1

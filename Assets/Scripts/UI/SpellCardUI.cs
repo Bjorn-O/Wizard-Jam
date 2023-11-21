@@ -21,6 +21,7 @@ public class SpellCardUI : MonoBehaviour
 
     [Header("Mods")]
     [SerializeField] private Image[] modifierIcons = new Image[3];
+    private Dictionary<DraggableMod, bool> dragModUpdateSpellPair = new Dictionary<DraggableMod, bool>();
 
     // Start is called before the first frame update
     void Start()
@@ -55,8 +56,18 @@ public class SpellCardUI : MonoBehaviour
         }
     }
 
-    public void UpdateStatsByMod(Modifier modifier, bool add)
+    public void UpdateStatsByMod(Modifier modifier, bool add, DraggableMod mod)
     {
+        if (dragModUpdateSpellPair.ContainsKey(mod))
+        {
+            if (dragModUpdateSpellPair[mod] == add)
+                return;
+            else
+                dragModUpdateSpellPair[mod] = add;
+        }
+        else
+            dragModUpdateSpellPair.Add(mod, add);
+
         if (add)
         {
             _spell.AddModifier(modifier);

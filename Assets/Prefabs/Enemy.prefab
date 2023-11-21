@@ -218,7 +218,7 @@ NavMeshAgent:
   m_Acceleration: 40
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 2.5
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -2051,6 +2051,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   spellCastSound: {fileID: 8300000, guid: a1812215b02dcca44965a8234d032ea5, type: 3}
+  cantCastSound: {fileID: 0}
   OnApplyModifiers:
     m_PersistentCalls:
       m_Calls: []

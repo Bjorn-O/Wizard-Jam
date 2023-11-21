@@ -19,5 +19,5 @@ MonoBehaviour:
   mods:
   - operation: 2
     targetStat: 1
-    value: 0.8
+    value: 0.6
   onHitEffects: []

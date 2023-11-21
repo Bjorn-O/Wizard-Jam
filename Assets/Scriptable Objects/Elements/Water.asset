@@ -19,10 +19,10 @@ MonoBehaviour:
   mods:
   - operation: 2
     targetStat: 0
-    value: 1.1
+    value: 1.2
   - operation: 2
     targetStat: 2
-    value: 1.1
+    value: 1.2
   - operation: 2
     targetStat: 1
     value: 1.1

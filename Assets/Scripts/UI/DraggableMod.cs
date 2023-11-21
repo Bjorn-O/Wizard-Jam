@@ -37,7 +37,7 @@ public class DraggableMod : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         }
         else
         {
-            cardUI.UpdateStatsByMod(modifier, false);
+            cardUI.UpdateStatsByMod(modifier, false, this);
             modSlotUI.modifier = null;
         }
         
