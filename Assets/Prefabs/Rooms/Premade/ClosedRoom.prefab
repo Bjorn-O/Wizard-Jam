@@ -1435,7 +1435,7 @@ MonoBehaviour:
   _extraModChance: 5
   _extraSpawnDifficulty: 2
   _modCountDifficulty: 1
-  _enemyExtraLoopHealth: 3
+  _enemyExtraLoopHealth: 4
   _enemyExtraDifficultyHealth: 25
   _wizardChance: 20
   _extraWizardChanceDifficulty: 5
